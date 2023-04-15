@@ -9,7 +9,7 @@ class Main extends Phaser.Scene {
     }
     create() {
         this.add.image(1150, 475, "fond").setScale(0.75);
-        this.add.image(1150, 475, "ecran").setScale(1);
+        this.add.image(1150, 475, "ecran").setScale(0.35);
         
         //this.gameButton = this.add.image(385,325,"bouton").setInteractive().setScale(0.1);
         //this.gameButton.on("pointerdown", this.launchGame, this);
