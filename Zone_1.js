@@ -6,10 +6,12 @@ class Zone_1 extends Phaser.Scene {
     preload() {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
+        this.load.image("fond_1","doc/galaxie.png")
 
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
     }
     create() {
+        this.add.image(800, 480, 'fond_1').setScale(0.47);
         this.carteDuNiveau = this.add.tilemap("Jardin");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
