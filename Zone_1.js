@@ -15,7 +15,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
-        this.player = this.physics.add.sprite(0, 0, 'perso').setScale(0.8);
+        this.player = this.physics.add.sprite(0, 0, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
