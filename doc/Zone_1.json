@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"..\/Json\/Zone_1.json"
+        }
+    },
  "height":30,
  "infinite":false,
  "layers":[
@@ -53,7 +61,7 @@
         {
          "columns":50,
          "firstgid":1,
-         "image":"..\/doc\/tileset collectable.png",
+         "image":"tileset collectable.png",
          "imageheight":960,
          "imagewidth":1600,
          "margin":0,
@@ -74,171 +82,8 @@
          "tilewidth":32
         }, 
         {
-         "columns":50,
          "firstgid":1764,
-         "image":"..\/doc\/tileset collectable.png",
-         "imageheight":960,
-         "imagewidth":1600,
-         "margin":0,
-         "name":"petit tileset",
-         "spacing":0,
-         "tilecount":1763,
-         "tileheight":32,
-         "tiles":[
-                {
-                 "id":0,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":false
-                        }]
-                }, 
-                {
-                 "id":4,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":5,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":6,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":7,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":54,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":55,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":56,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":57,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":104,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":105,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":106,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":107,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":154,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":155,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":156,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":157,
-                 "properties":[
-                        {
-                         "name":"Dur",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }],
-         "tilewidth":32
+         "source":"petit tileset.tsx"
         }],
  "tilewidth":32,
  "type":"map",

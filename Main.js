@@ -3,7 +3,7 @@ class Main extends Phaser.Scene {
         super("Main");
     }
     preload() {
-        this.load.image("bouton", "doc/Gaïa.png");
+        this.load.image("bouton", "doc/étoile.png");
         this.load.image("ecran", "doc/Menu.png")
         this.load.image("fond","doc/Fond_Menu.png")
     }
