@@ -3,6 +3,10 @@ class Zone_2 extends Phaser.Scene {
     constructor() {
         super("Zone_2");
     }
+    init(data){
+        this.spawnX = data.spawnX
+        this.spawnY = data.spawnY
+    }
     preload() {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
@@ -22,7 +26,11 @@ class Zone_2 extends Phaser.Scene {
         this.calque_chute1.setCollisionByProperty({ Dur: true })
         this.calque_chute1.setVisible(false)
 
-        this.player = this.physics.add.sprite(1510, 56, 'perso').setScale(0.3);
+        this.calque_change1 = this.carteDuNiveau.createLayer("change1",this.tileset);
+        this.calque_change1.setCollisionByProperty({ Dur: true })
+        this.calque_change1.setVisible(false)
+
+        this.player = this.physics.add.sprite(this.spawnX, this.spawnY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -31,8 +39,9 @@ class Zone_2 extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_sol);
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
+        this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
 
-
+        //1510, 56,
             
 
 
@@ -53,6 +62,14 @@ class Zone_2 extends Phaser.Scene {
             this.player.setVelocityY(-330);
         }
 
+    }
+    switch1()
+    {
+        this.scene.start("Zone_1",{
+            spawnX: 94,
+            spawnY: 265,
+        }
+        )
     }
     respawn1()
     {
