@@ -14,6 +14,7 @@
 <body>
     <script src="Main.js"></script>
     <script src="Zone_1.js"></script>
+    <script src="Zone_2.js"></script>
     <script>
         function play(){
         var audio = new Audio(src = 'son/Dead Ends.mp3');
@@ -45,7 +46,7 @@
                     debug: true
                 }
             },
-            scene: [Main,Zone_1,],
+            scene: [Main,Zone_1,Zone_2],
         };
         new Phaser.Game(config);
     </script>

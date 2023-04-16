@@ -8,6 +8,7 @@ class Zone_1 extends Phaser.Scene {
         this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
         this.load.image("fond_1","doc/galaxie.png")
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
+        this.load.image('snowball', "doc/snowball.png");
         
     }
     create() {
@@ -16,6 +17,7 @@ class Zone_1 extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
         this.calque_tentative.setCollisionByProperty({ Dur: true })
+        this.hf = this.add.image(800, 780, 'snowball').setScale(0.4);
 
         this.calque_switch = this.carteDuNiveau.createLayer("switch",this.tileset);
         this.calque_switch.setCollisionByProperty({ Dur: true })
@@ -24,6 +26,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_chute = this.carteDuNiveau.createLayer("chute",this.tileset);
         this.calque_chute.setCollisionByProperty({ Dur: true })
         this.calque_chute.setVisible(false)
+
 
         this.player = this.physics.add.sprite(50, 900, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
@@ -44,6 +47,16 @@ class Zone_1 extends Phaser.Scene {
 
     }
     update() {
+
+        if (this.cursors.space.isDown){ 
+
+            setTimeout(() => {
+                 
+                this.hf.setVisible(false)
+
+            }, "300")
+        }
+        
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-160); 
         }
