@@ -9,6 +9,7 @@ class Zone_1 extends Phaser.Scene {
         this.load.image("fond_1","doc/galaxie.png")
 
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
+        
     }
     create() {
         this.add.image(800, 480, 'fond_1').setScale(0.47);
@@ -30,6 +31,11 @@ class Zone_1 extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_tentative);
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
+
+
+            
+
+
         
 
     }
