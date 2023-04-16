@@ -25,7 +25,7 @@ class Zone_1 extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
         this.calque_tentative.setCollisionByProperty({ Dur: true })
-        this.hf = this.add.sprite(450, 780, 'final').setScale(0.8).setScrollFactor(0);
+        this.hf = this.add.sprite(450, 80, 'final').setScale(0.8).setScrollFactor(0);
         
 
         //Audio 
