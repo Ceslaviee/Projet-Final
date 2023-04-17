@@ -1,7 +1,7 @@
-class Zone_1 extends Phaser.Scene {
+class Zone_1bis extends Phaser.Scene {
 
     constructor() {
-        super("Zone_1");
+        super("Zone_1bis");
     }
     init(data){
         this.spawnX = data.spawnX
@@ -9,7 +9,7 @@ class Zone_1 extends Phaser.Scene {
     }
     preload() {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
+        this.load.tilemapTiledJSON("Jardin", "Json/Zone_1bis.json");
         this.load.image("fond_1","doc/galaxie.png")
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
@@ -20,7 +20,7 @@ class Zone_1 extends Phaser.Scene {
     create() {
 
         
-        this.add.image(800, 480, 'fond_1').setScale(0.47);
+        this.add.image(1800, 480, 'fond_1').setScale(1.2);
         this.carteDuNiveau = this.add.tilemap("Jardin");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
@@ -58,8 +58,8 @@ class Zone_1 extends Phaser.Scene {
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.physics.world.setBounds(0, 0, 1600, 960);
-        this.cameras.main.setBounds(0, 0, 1600, 960);
+        this.physics.world.setBounds(0, 0, 3840, 960);
+        this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_tentative);
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
@@ -75,7 +75,7 @@ class Zone_1 extends Phaser.Scene {
         this.anims.create({
             key: '1',
             frames: this.anims.generateFrameNumbers('final', {start:0,end:6}),
-            frameRate: 3
+            frameRate: 14
             
         });
         this.hf.anims.play('1', true)
@@ -103,10 +103,10 @@ class Zone_1 extends Phaser.Scene {
         }
         
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-160); 
+            this.player.setVelocityX(-260); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(160); 
+            this.player.setVelocityX(560); 
         }
         else{ // sinon
             this.player.setVelocityX(0);
@@ -129,8 +129,8 @@ class Zone_1 extends Phaser.Scene {
         this.audio.stop()
         this.scene.start("Zone_2",{
             
-        spawnX : 1510,
-        spawnY : 56,
+        spawnX : 97,
+        spawnY : 900,
         
             
         }

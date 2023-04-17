@@ -17,7 +17,7 @@ class Main extends Phaser.Scene {
     update() {}
     launchGame()
     {
-        this.scene.start('Zone_1',{
+        this.scene.start('Zone_1bis',{
             spawnX: 50,
             spawnY: 900    
         }

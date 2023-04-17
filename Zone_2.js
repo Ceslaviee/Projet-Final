@@ -34,8 +34,8 @@ class Zone_2 extends Phaser.Scene {
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.physics.world.setBounds(0, 0, 1600, 960);
-        this.cameras.main.setBounds(0, 0, 1600, 960);
+        this.physics.world.setBounds(0, 0, 3840, 960);
+        this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_sol);
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
@@ -65,9 +65,9 @@ class Zone_2 extends Phaser.Scene {
     }
     switch1()
     {
-        this.scene.start("Zone_1",{
-            spawnX: 94,
-            spawnY: 265,
+        this.scene.start("Zone_1bis",{
+            spawnX: 3735,
+            spawnY: 900,
         }
         )
     }
