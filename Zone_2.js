@@ -59,7 +59,7 @@ class Zone_2 extends Phaser.Scene {
             this.player.setVelocityX(-360); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(360); 
+            this.player.setVelocityX(960); 
         }
         else{ // sinon
             this.player.setVelocityX(0);

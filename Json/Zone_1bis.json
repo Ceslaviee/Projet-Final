@@ -161,7 +161,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":4,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
@@ -176,7 +176,7 @@
          "margin":0,
          "name":"petit tileset",
          "spacing":0,
-         "tilecount":3600,
+         "tilecount":1500,
          "tileheight":32,
          "tiles":[
                 {

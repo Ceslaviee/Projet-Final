@@ -7,8 +7,10 @@ class Fin extends Phaser.Scene {
         this.load.image('fin', "doc/fin.png",{ frameWidth: 3005, frameHeight: 385})
     }
     create() {
-        this.hf = this.add.image(450, 480, 'fin').setScale(0.3).setScrollFactor(0).setAlpha(0);
+        this.hf = this.add.image(450, 780, 'fin').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hf,3000,5000)
+
+
     }
     update() {}
     fadeInAndOut(image, duration, fadeOutDelay) {
