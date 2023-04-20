@@ -30,6 +30,10 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change1.setCollisionByProperty({ Dur: true })
         this.calque_change1.setVisible(false)
 
+        this.calque_change2 = this.carteDuNiveau.createLayer("change2",this.tileset);
+        this.calque_change2.setCollisionByProperty({ Dur: true })
+        this.calque_change2.setVisible(false)
+
         this.player = this.physics.add.sprite(this.spawnX, this.spawnY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
@@ -40,6 +44,8 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_sol);
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
+        this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+
 
         //1510, 56,
             
@@ -50,10 +56,10 @@ class Zone_2 extends Phaser.Scene {
     }
     update() {
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-160); 
+            this.player.setVelocityX(-360); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(160); 
+            this.player.setVelocityX(360); 
         }
         else{ // sinon
             this.player.setVelocityX(0);
@@ -66,6 +72,14 @@ class Zone_2 extends Phaser.Scene {
     switch1()
     {
         this.scene.start("Zone_1bis",{
+            spawnX: 3735,
+            spawnY: 900,
+        }
+        )
+    }
+    switch2()
+    {
+        this.scene.start("Fin",{
             spawnX: 3735,
             spawnY: 900,
         }

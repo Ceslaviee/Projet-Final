@@ -14,7 +14,6 @@ class Zone_1bis extends Phaser.Scene {
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.spritesheet('final', "doc/final.png",{ frameWidth: 971, frameHeight: 143})
         
     }
     create() {
@@ -25,8 +24,6 @@ class Zone_1bis extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
         this.calque_tentative.setCollisionByProperty({ Dur: true })
-        this.hf = this.add.sprite(450, 80, 'final').setScale(0.8).setScrollFactor(0);
-        
 
         //Audio 
         this.audio = this.sound.add('Dead_Ends',{
@@ -72,13 +69,13 @@ class Zone_1bis extends Phaser.Scene {
         }).setScrollFactor(0)
 
 
-        this.anims.create({
+        /*this.anims.create({
             key: '1',
             frames: this.anims.generateFrameNumbers('final', {start:0,end:6}),
             frameRate: 14
             
         });
-        this.hf.anims.play('1', true)
+        this.hf.anims.play('1', true)*/
 
 
         
@@ -90,17 +87,8 @@ class Zone_1bis extends Phaser.Scene {
         
 
     }
+        
     update() {
-
-        if (this.cursors.space.isDown){ 
-            this.time.delayedCall(
-                1000,
-
-                () => {
-                    this.hf.anims.playReverse('1', true)
-
-            },[],this)
-        }
         
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
@@ -117,6 +105,7 @@ class Zone_1bis extends Phaser.Scene {
 
 
     }
+    
 
     upScore(player,pickup)
     {
