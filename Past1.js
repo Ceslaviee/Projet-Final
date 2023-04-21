@@ -13,7 +13,7 @@ class Past1 extends Phaser.Scene {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         this.load.tilemapTiledJSON("jar", "Json/Zone_1bis.json");
         this.load.image("fond_2","doc/galaxie2.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
+        this.load.image('pers', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         
@@ -53,7 +53,7 @@ class Past1 extends Phaser.Scene {
 
 
         //Config
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'pers').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();

@@ -14,22 +14,22 @@ class Fin extends Phaser.Scene {
     }
     update() {}
     fadeInAndOut(image, duration, fadeOutDelay) {
-        // Récupérer l'opacité initiale de l'image
+        
         const initialOpacity = image.alpha;
     
-        // Augmenter progressivement l'opacité de l'image jusqu'à 1 (pleine opacité)
+        
         this.tweens.add({
             targets: image,
             alpha: 1,
-            duration: duration / 2, // La moitié de la durée totale pour augmenter l'opacité
+            duration: duration / 2, 
             onComplete: () => {
-                // Attendre un certain délai avant de réduire à nouveau l'opacité
+                
                 this.time.delayedCall(fadeOutDelay, () => {
-                    // Réduire progressivement l'opacité de l'image jusqu'à l'opacité initiale
+                    
                     this.tweens.add({
                         targets: image,
                         alpha: initialOpacity,
-                        duration: duration / 2, // La moitié de la durée totale pour réduire l'opacité
+                        duration: duration / 2, 
                     });
                 });
             }
