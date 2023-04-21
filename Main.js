@@ -19,7 +19,7 @@ class Main extends Phaser.Scene {
     {
         this.scene.start('Zone_1',{
             coordX: 50,
-            coordY: 900    
+            coordY: 840    
         }
         )
 

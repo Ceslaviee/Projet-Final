@@ -11,7 +11,7 @@ class Past1 extends Phaser.Scene {
     }
     preload() {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("jar", "Json/Zone_1bis.json");
+        this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
         this.load.image("fond_2","doc/galaxie2.png")
         this.load.image('pers', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
