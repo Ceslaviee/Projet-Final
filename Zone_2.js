@@ -12,7 +12,7 @@ class Zone_2 extends Phaser.Scene {
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
         this.load.image("fond_1","doc/galaxie.png")
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        
+        this.load.image("faille3","doc/faille3.png")
     }
     create() {
         this.add.image(800, 480, 'fond_1').setScale(0.47);
@@ -46,6 +46,8 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
 
+        this.gameButton = this.add.image(865,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
+        this.gameButton.on("pointerdown", this.coAudio, this);
 
         //1510, 56,
             
@@ -68,6 +70,13 @@ class Zone_2 extends Phaser.Scene {
             this.player.setVelocityY(-330);
         }
 
+    }
+    coAudio()
+    {
+        this.audio = this.sound.add('Dead_Ends',{
+            volume : 0.1,
+        })
+            this.audio.play()
     }
     switch1()
     {
