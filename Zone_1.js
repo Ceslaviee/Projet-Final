@@ -17,6 +17,7 @@ class Zone_1 extends Phaser.Scene {
         this.load.image('soleil', "planetes/Soleil.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         this.load.image('prélude', "doc/prélude.png");
+        this.load.image('bout', "doc/faille1.png")
         
     }
     create() {
@@ -28,10 +29,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
         //Audio 
-        this.audio = this.sound.add('Dead_Ends',{
-            volume : 0.1, loop : true
-        })
-        this.audio.play()
+
 
 
         //Calque
@@ -74,6 +72,9 @@ class Zone_1 extends Phaser.Scene {
         this.pre = this.add.image(450, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.pre,3000,5000)
 
+        this.gameButton = this.add.image(865,925,"bout").setInteractive().setScale(0.04);
+        this.gameButton.on("pointerdown", this.coAudio, this);
+
         
 
     }
@@ -96,6 +97,13 @@ class Zone_1 extends Phaser.Scene {
         }
 
 
+    }
+    coAudio()
+    {
+        this.audio = this.sound.add('Dead_Ends',{
+            volume : 0.1,
+        })
+            this.audio.play()
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
         
@@ -127,12 +135,10 @@ class Zone_1 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.audio.stop()
         this.scene.start("Past1",{ coordX : this.player.x, coordY : this.player.y})
     }
     switch1() 
     {
-        this.audio.stop()
         this.scene.start("Zone_2",{
             
         spawnX : 97,
@@ -144,8 +150,7 @@ class Zone_1 extends Phaser.Scene {
     }
     respawn()
     {
-        this.audio.stop()
-        this.scene.restart()
+        this.scene.restart({coordX: 50, coordY: 840 })
 
     }
 };

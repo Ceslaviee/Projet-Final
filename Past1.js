@@ -16,6 +16,7 @@ class Past1 extends Phaser.Scene {
         this.load.image('pers', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
+        this.load.image('boute', "doc/faille2.png");
         
     }
     create() {
@@ -26,12 +27,6 @@ class Past1 extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_tentative = this.carteDuNiveau.createLayer("tentative",this.tileset);
         this.calque_tentative.setCollisionByProperty({ Dur: true })
-
-        //Audio 
-        this.audio = this.sound.add('Dead_Ends',{
-            volume : 0.1, loop : true
-        })
-        this.audio.play()
 
         //Calque
         this.calque_switch = this.carteDuNiveau.createLayer("switch",this.tileset);
@@ -70,6 +65,9 @@ class Past1 extends Phaser.Scene {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
+        this.gameButton = this.add.image(865,925,"boute").setInteractive().setScale(0.04);
+        this.gameButton.on("pointerdown", this.coAudio, this);
+
         
 
     }
@@ -93,6 +91,13 @@ class Past1 extends Phaser.Scene {
 
 
     }
+    coAudio()
+    {
+        this.audio = this.sound.add('Dead_Ends',{
+            volume : 0.1,
+        })
+            this.audio.play()
+    }
     upScore(player,pickup)
     {
         pickup.destroy()
@@ -101,14 +106,12 @@ class Past1 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.audio.stop()
         this.scene.start("Zone_1",{ coordX : this.player.x, coordY : this.player.y})
 
 
     }
     switch1() 
     {
-        this.audio.stop()
         this.scene.start("Zone_2",{
             
         spawnX : 97,
@@ -120,7 +123,6 @@ class Past1 extends Phaser.Scene {
     }
     respawn()
     {
-        this.audio.stop()
         this.scene.restart()
 
     }
