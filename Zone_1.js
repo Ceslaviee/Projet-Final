@@ -16,11 +16,11 @@ class Zone_1 extends Phaser.Scene {
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image('soleil', "planetes/Soleil.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
+        this.load.image('prélude', "doc/prélude.png");
         
     }
     create() {
 
-        
         this.add.image(1800, 480, 'fond_1').setScale(1.2);
         this.carteDuNiveau = this.add.tilemap("Jardin");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
@@ -32,6 +32,7 @@ class Zone_1 extends Phaser.Scene {
             volume : 0.1, loop : true
         })
         this.audio.play()
+
 
         //Calque
         this.calque_switch = this.carteDuNiveau.createLayer("switch",this.tileset);
@@ -70,6 +71,9 @@ class Zone_1 extends Phaser.Scene {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
+        this.pre = this.add.image(450, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
+        this.fadeInAndOut(this.pre,3000,5000)
+
         
 
     }
@@ -92,6 +96,28 @@ class Zone_1 extends Phaser.Scene {
         }
 
 
+    }
+    fadeInAndOut(image, duration, fadeOutDelay) {
+        
+        const initialOpacity = image.alpha;
+    
+        
+        this.tweens.add({
+            targets: image,
+            alpha: 1,
+            duration: duration / 2, 
+            onComplete: () => {
+                
+                this.time.delayedCall(fadeOutDelay, () => {
+                    
+                    this.tweens.add({
+                        targets: image,
+                        alpha: initialOpacity,
+                        duration: duration / 2, 
+                    });
+                });
+            }
+        });
     }
     upScore(player,pickup)
     {
