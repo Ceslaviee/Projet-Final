@@ -141,8 +141,8 @@ class Zone_1 extends Phaser.Scene {
     {
         this.scene.start("Zone_2",{
             
-        spawnX : 97,
-        spawnY : 900,
+        coordX: 97,
+        coordY: 900,
         
             
         }

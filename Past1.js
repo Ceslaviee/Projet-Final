@@ -112,10 +112,10 @@ class Past1 extends Phaser.Scene {
     }
     switch1() 
     {
-        this.scene.start("Zone_2",{
+        this.scene.start("Past2",{
             
-        spawnX : 97,
-        spawnY : 900,
+        coordX: 97,
+        coordY: 900,
         
             
         }
@@ -123,7 +123,7 @@ class Past1 extends Phaser.Scene {
     }
     respawn()
     {
-        this.scene.restart()
+        this.scene.restart({coordX: 50, coordY: 840 })
 
     }
 };
