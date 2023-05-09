@@ -14,7 +14,7 @@ class Past1 extends Phaser.Scene {
         this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
         this.load.image("fond_2","doc/galaxie2.png")
         this.load.image('pers', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image('soleil', "planetes/Soleil.png");
+        this.load.image('souleil', "planetes/SoleilP.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         this.load.image('boute', "doc/faille2.png");
         
@@ -43,7 +43,7 @@ class Past1 extends Phaser.Scene {
             gravity : false
         })
         this.calque_point.objects.forEach(calque_point => {
-            const POcol = this.pickup.create(calque_point.x, calque_point.y, "soleil").setScale(0.3).body.setAllowGravity(false);
+            const POcol = this.pickup.create(calque_point.x, calque_point.y, "souleil").setScale(0.3).body.setAllowGravity(false);
         });
 
 

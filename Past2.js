@@ -14,6 +14,7 @@ class Past2 extends Phaser.Scene {
         this.load.image('perso', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image("faille3","doc/faille3.png")
         this.load.image('hor', "doc/horizon.png");
+        this.load.image('pétales',"doc/pétales.png");
     }
     create() {
         this.add.image(1800, 680, 'k').setScale(1.2);
@@ -35,6 +36,8 @@ class Past2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
 
+        this.add.image(1925,940,'pétales').setScale(0.95)
+
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
@@ -52,6 +55,8 @@ class Past2 extends Phaser.Scene {
             
         this.hor = this.add.image(450, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
+
+        
 
         
 
