@@ -17,7 +17,9 @@ class Past1 extends Phaser.Scene {
         this.load.image('souleil', "planetes/SoleilP.png");
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         this.load.image('boute', "doc/faille2.png");
-        
+        this.load.image('mais2',"doc/Maison_2.png")
+        this.load.image('mais3',"doc/Maison_3.png")
+        this.load.image("porte", "doc/étoile.png");
     }
     create() {
 
@@ -46,6 +48,11 @@ class Past1 extends Phaser.Scene {
             const POcol = this.pickup.create(calque_point.x, calque_point.y, "souleil").setScale(0.3).body.setAllowGravity(false);
         });
 
+        this.add.image(130,760, 'mais2').setScale(0.17);
+        this.add.image(3600 ,760, 'mais3').setScale(0.17);
+        this.porte = this.physics.add.staticGroup();
+        this.porte.create(125,850, 'porte').setScale(0.2);
+
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'pers').setScale(0.3);
@@ -59,6 +66,7 @@ class Past1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
+        this.physics.add.collider(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
         this.scoreTexte = this.add.text(880, 40, this.score, {
@@ -67,7 +75,7 @@ class Past1 extends Phaser.Scene {
 
         this.gameButton = this.add.image(865,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
         this.gameButton.on("pointerdown", this.coAudio, this);
-
+        
         
 
     }
@@ -109,6 +117,14 @@ class Past1 extends Phaser.Scene {
         this.scene.start("Zone_1",{ coordX : this.player.x, coordY : this.player.y})
 
 
+    }
+    entree()
+    {
+        console.log("dlf")
+        if (this.cursors.shift.isDown){
+            console.log("log")
+            this.scene.start("Maison")
+        }
     }
     switch1() 
     {
