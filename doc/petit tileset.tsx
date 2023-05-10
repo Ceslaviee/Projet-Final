@@ -175,4 +175,284 @@
    <property name="Dur" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="212">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="213">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="214">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="215">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="216">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="217">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="218">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="219">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="220">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="221">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="262">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="263">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="264">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="265">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="266">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="267">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="268">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="269">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="270">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="271">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="312">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="313">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="314">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="315">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="316">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="317">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="318">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="319">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="320">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="321">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="362">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="363">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="364">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="365">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="366">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="367">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="368">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="369">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="370">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="371">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="400">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="401">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="402">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="403">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="450">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="451">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="452">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="453">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="500">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="501">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="502">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="503">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="550">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="551">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="552">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="553">
+  <properties>
+   <property name="Dur" type="bool" value="true"/>
+  </properties>
+ </tile>
 </tileset>

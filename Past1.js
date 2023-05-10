@@ -123,7 +123,12 @@ class Past1 extends Phaser.Scene {
         console.log("dlf")
         if (this.cursors.shift.isDown){
             console.log("log")
-            this.scene.start("Maison")
+            this.scene.start("Maison",{
+
+                coordX: 1816,
+                coordY: 809,
+            }
+            );
         }
     }
     switch1() 
