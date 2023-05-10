@@ -37,7 +37,7 @@ class Maison extends Phaser.Scene {
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
-        this.cameras.main.setBounds(0, 0, 3840, 960);
+        this.cameras.main.setBounds(0, 0, 1840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
         this.physics.add.collider(this.player, this.calque_sortie,this.switch1, null, this );
@@ -51,9 +51,6 @@ class Maison extends Phaser.Scene {
     }
         
     update() {
-        if (this.cursors.space.isDown){
-            this.changementZone()
-        }
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
         }
