@@ -29,6 +29,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
         //Audio 
+        this.add.text(100, 800, 'Appuie sur Espace', { font: "15px Times New Roman", fill: "white", align:"center" });
 
 
 
@@ -78,7 +79,11 @@ class Zone_1 extends Phaser.Scene {
         
 
     }
-        
+ 
+    MonTexte(){ 
+    monTexte = this.add.text(100, 300, 'GAME OVER', { font: "60px calibri", fill: "white", 
+        align:"center" });
+    }
     update() {
         if (this.cursors.space.isDown){
             this.changementZone()
