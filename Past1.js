@@ -66,7 +66,7 @@ class Past1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
-        this.physics.add.collider(this.player, this.porte, this.entree, null, this);
+        this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
         this.scoreTexte = this.add.text(880, 40, this.score, {
