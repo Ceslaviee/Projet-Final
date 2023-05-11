@@ -18,6 +18,8 @@ class Zone_1 extends Phaser.Scene {
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         this.load.image('prélude', "doc/prélude.png");
         this.load.image('bout', "doc/faille1.png")
+        this.load.image('mais2',"doc/Maison_2.png")
+        this.load.image("porte", "doc/étoile.png");
         
     }
     create() {
@@ -29,7 +31,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
         //Audio 
-        this.add.text(100, 800, 'Appuie sur Espace', { font: "15px Times New Roman", fill: "white", align:"center" });
+        //this.add.text(100, 800, 'Appuie sur Espace', { font: "25px SchwarzKopf", fill: "white", align:"center" });
 
 
 
@@ -51,6 +53,10 @@ class Zone_1 extends Phaser.Scene {
             const POcol = this.pickup.create(calque_point.x, calque_point.y, "soleil").setScale(0.3).body.setAllowGravity(false);
         });
 
+        this.add.image(130,760, 'mais2').setScale(0.17);
+        this.porte = this.physics.add.staticGroup();
+        this.porte.create(125,850, 'porte').setScale(0.2);
+
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -64,6 +70,7 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
+        this.physics.add.collider(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
         this.scoreTexte = this.add.text(880, 40, this.score, {
@@ -79,11 +86,6 @@ class Zone_1 extends Phaser.Scene {
         
 
     }
- 
-    MonTexte(){ 
-    monTexte = this.add.text(100, 300, 'GAME OVER', { font: "60px calibri", fill: "white", 
-        align:"center" });
-    }
     update() {
         if (this.cursors.space.isDown){
             this.changementZone()
@@ -92,7 +94,7 @@ class Zone_1 extends Phaser.Scene {
             this.player.setVelocityX(-260); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(260); 
         }
         else{ // sinon
             this.player.setVelocityX(0);
@@ -109,6 +111,19 @@ class Zone_1 extends Phaser.Scene {
             volume : 0.1,
         })
             this.audio.play()
+    }
+    entree()
+    {
+        console.log("dlf")
+        if (this.cursors.shift.isDown){
+            console.log("log")
+            this.scene.start("Maison",{
+
+                coordX: 1816,
+                coordY: 809,
+            }
+            );
+        }
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
         

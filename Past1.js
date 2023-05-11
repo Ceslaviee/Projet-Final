@@ -88,13 +88,13 @@ class Past1 extends Phaser.Scene {
             this.player.setVelocityX(-260); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(560); 
+            this.player.setVelocityX(260); 
         }
         else{ // sinon
             this.player.setVelocityX(0);
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
-            this.player.setVelocityY(-330);
+            this.player.setVelocityY(-400);
         }
 
 

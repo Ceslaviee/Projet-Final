@@ -1,7 +1,7 @@
-class Maison extends Phaser.Scene {
+class Debut extends Phaser.Scene {
 
     constructor() {
-        super("Maison");
+        super("Debut");
     }
     init(data){
         this.spawnX = data.spawnX
@@ -11,7 +11,7 @@ class Maison extends Phaser.Scene {
     }
     preload() {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("maison", "Json/Maison.json");
+        this.load.tilemapTiledJSON("debut", "Json/Debut.json");
         this.load.image("fond_1","doc/galaxie.png")
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
@@ -21,15 +21,14 @@ class Maison extends Phaser.Scene {
     create() {
 
         this.add.image(1800, 480, 'fond_1').setScale(1.2);
-        this.carteDuNiveau = this.add.tilemap("maison");
+        this.carteDuNiveau = this.add.tilemap("debut");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
-        this.calque_Murs = this.carteDuNiveau.createLayer("Murs",this.tileset);
-        this.calque_Murs.setCollisionByProperty({ Dur: true })
+        this.calque_herbe = this.carteDuNiveau.createLayer("herbe",this.tileset);
+        this.calque_herbe.setCollisionByProperty({ Dur: true })
 
-        this.calque_Stands = this.carteDuNiveau.createLayer("Stands",this.tileset);
-
-        this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
-        this.calque_sortie.setCollisionByProperty({ Dur: true })
+        this.calque_meson = this.carteDuNiveau.createLayer("meson",this.tileset);
+        this.calque_meson.setCollisionByProperty({ Dur: true })
+        this.calque_meson.setVisible(false)
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -37,10 +36,10 @@ class Maison extends Phaser.Scene {
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
-        this.cameras.main.setBounds(0, 0, 1840, 960);
+        this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
-        this.physics.add.collider(this.player, this.calque_Murs);
-        this.physics.add.collider(this.player, this.calque_sortie,this.switch1, null, this );
+        this.physics.add.collider(this.player, this.calque_herbe);
+        this.physics.add.collider(this.player, this.calque_meson,this.switch1, null, this );
 
 
         this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
@@ -55,7 +54,7 @@ class Maison extends Phaser.Scene {
             this.player.setVelocityX(-260); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(260); 
         }
         else{ // sinon
             this.player.setVelocityX(0);

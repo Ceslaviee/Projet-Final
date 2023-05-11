@@ -11,7 +11,7 @@ class Past2 extends Phaser.Scene {
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         this.load.tilemapTiledJSON("Guerre", "Json/Past2.json");
         this.load.image("k","doc/k.png")
-        this.load.image('perso', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
+        this.load.image('perso2', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image("faille3","doc/faille3.png")
         this.load.image('hor', "doc/horizon.png");
         this.load.image('pétales',"doc/pétales.png");
@@ -38,7 +38,7 @@ class Past2 extends Phaser.Scene {
 
         this.add.image(1925,940,'pétales').setScale(0.95)
 
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso2').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -69,7 +69,7 @@ class Past2 extends Phaser.Scene {
             this.player.setVelocityX(-360); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(360); 
         }
         else{ // sinon
             this.player.setVelocityX(0);
