@@ -54,7 +54,7 @@ class Debut extends Phaser.Scene {
             this.player.setVelocityX(-260); 
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260); 
+            this.player.setVelocityX(1060); 
         }
         else{ // sinon
             this.player.setVelocityX(0);

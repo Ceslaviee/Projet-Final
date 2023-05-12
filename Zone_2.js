@@ -14,6 +14,7 @@ class Zone_2 extends Phaser.Scene {
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.image("faille3","doc/faille3.png")
         this.load.image('hor', "doc/horizon.png");
+        this.load.spritesheet("slime", "doc/slime.png",{frameWidth : 262, frameHeight: 192})
     }
     create() {
         this.add.image(1800, 680, 'k2').setScale(1.2);
@@ -35,9 +36,13 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
 
+        this.slime = this.physics.add.sprite(150, 840, 'slime').setScale(0.4).setSize(75,75)
+        
+
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
+
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
         this.cameras.main.setBounds(0, 0, 3840, 960);
@@ -46,12 +51,23 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+        this.physics.add.collider(this.slime, this.calque_sol);
 
         this.gameButton = this.add.image(865,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(450, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
+
+        this.anims.create({
+            key: 'animsl',
+            frames: this.anims.generateFrameNumbers('slime', {start:0,end:1}),
+            frameRate: 1,
+            repeat: -1
+        })
+        this.slime.anims.play('animsl')
+
+        
 
         
 
