@@ -45,6 +45,29 @@ class Debut extends Phaser.Scene {
         this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
+        content = "Ceci est un exemple de texte progressif.";
+        index = 0;
+        this.time.addEvent({
+            delay: 50,
+            callback: function() {
+              text.text += content[index];
+              index++;
+              if (index === content.length) {
+                clearInterval(timer);
+              }
+            }
+          });
+        
+          var timer = setInterval(function() {
+            if (index === content.length) {
+              clearInterval(timer);
+            } else {
+              text.text += content[index];
+              index++;
+            }
+          }, 50);
+
+
         
 
     }
@@ -100,7 +123,10 @@ class Debut extends Phaser.Scene {
             coordX: 50,
             coordY: 840    
         }
-        );
-    }
+        );}
+    
+    défilage()
+    {
 
+    }
 }
