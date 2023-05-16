@@ -30,8 +30,13 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
 
-        this.slime = this.physics.add.sprite(150, 840, 'slime').setScale(0.4).setSize(75,75)
-        
+        this.slime = this.physics.add.sprite(150, 920, 'slime').setScale(0.4).setSize(75,75)
+        //this.slime.vaversladroite=true;
+        this.slimeX = this.slime.x
+        this.slimeY = this.slime.y     
+        this.slimespeed = 250
+
+        this.gauche = 0
 
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
@@ -53,13 +58,8 @@ class Zone_2 extends Phaser.Scene {
         this.hor = this.add.image(450, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
 
-        this.anims.create({
-            key: 'animsl',
-            frames: this.anims.generateFrameNumbers('slime', {start:0,end:1}),
-            frameRate: 1,
-            repeat: -1
-        })
-        this.slime.anims.play('animsl')
+        
+
 
         
 
@@ -83,7 +83,32 @@ class Zone_2 extends Phaser.Scene {
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
         }
+        if (this.gauche == 0){
+            this.slime.anims.play('animslime', true);
+        }
+        else {
+            this.slime.anims.play('animslime_back', true);
+        }
+        if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) < 1000){
+            this.slime.setVelocityX(this.slimespeed)
+            this.gauche += 0
+            console.log("lol")
 
+        }
+        else if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) > 1000){
+            this.slime.setVelocityX(this.slimespeed * (-1))
+            this.gauche -= 1
+            console.log("lol1")
+        }
+
+        else{
+            this.gauche += 1
+            this.slimeX = this.slime.x
+            this.slimeY = this.slime.y     
+            this.slimespeed = this.slimespeed * (-1)
+        }
+        
+            
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
         

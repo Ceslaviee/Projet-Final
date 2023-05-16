@@ -43,7 +43,9 @@ class Preload extends Phaser.Scene {
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.spritesheet("slime", "doc/slime.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet("slimeR", "doc/slime2.png",{frameWidth : 262, frameHeight: 192});
+        this.load.spritesheet("slimeRed", "doc/slime2_back.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet('cligne', 'doc/blinkD.png',{frameWidth : 161, frameHeight: 217});
+        
         
     }
     create() {  
@@ -51,6 +53,20 @@ class Preload extends Phaser.Scene {
         this.anims.create({
             key: 'anim1',
             frames: this.anims.generateFrameNumbers('cligne', {start:0,end:4}),
+            frameRate: 1,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'animslime',
+            frames: this.anims.generateFrameNumbers('slimeR', {start:0,end:1}),
+            frameRate: 1,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'animslime_back',
+            frames: this.anims.generateFrameNumbers('slimeRed', {start:0,end:1}),
             frameRate: 1,
             repeat: -1
         })
