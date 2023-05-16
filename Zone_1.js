@@ -10,16 +10,7 @@ class Zone_1 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
-        this.load.image("fond_1","doc/galaxie.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image('soleil', "planetes/Soleil.png");
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('prélude', "doc/prélude.png");
-        this.load.image('bout', "doc/faille1.png")
-        this.load.image('mais2',"doc/Maison_2.png")
-        this.load.image("porte", "doc/étoile.png");
+
         
     }
     create() {
@@ -98,6 +89,7 @@ class Zone_1 extends Phaser.Scene {
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);

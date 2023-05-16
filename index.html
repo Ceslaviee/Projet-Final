@@ -20,6 +20,7 @@
     <script src="Past2.js"></script>
     <script src="Maison.js"></script>
     <script src="Debut.js"></script>
+    <script src="Preload.js"></script>
     <script type="text/javascript">
         var config = {
             type: Phaser.AUTO,
@@ -44,7 +45,7 @@
                     debug: true
                 }
             },
-            scene: [Main,Debut,Maison,Zone_1,Past1,Zone_2,Past2,Fin],
+            scene: [Preload,Main,Debut,Maison,Zone_1,Past1,Zone_2,Past2,Fin],
         };
         new Phaser.Game(config);
     </script>

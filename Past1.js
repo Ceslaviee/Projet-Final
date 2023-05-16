@@ -10,19 +10,6 @@ class Past1 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
-        this.load.image("fond_2","doc/galaxie2.png")
-        this.load.image('souleil', "planetes/SoleilP.png");
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('boute', "doc/faille2.png");
-        this.load.image('mais2',"doc/Maison_2.png")
-        this.load.image('mais3',"doc/Maison_3.png")
-        this.load.image("porte", "doc/étoile.png");
-        
-
-        this.load.spritesheet('cligne', 'doc/cligne.png',
-                {frameWidth : 161, frameHeight: 217});
     }
     create() {
 
@@ -56,18 +43,13 @@ class Past1 extends Phaser.Scene {
         this.porte = this.physics.add.staticGroup();
         this.porte.create(125,850, 'porte').setScale(0.2);
 
-        this.anims.create({
-            key: 'anim1',
-            frames: this.anims.generateFrameNumbers('cligne', {start:0,end:40}),
-            frameRate: 10,
-            repeat: -1
-        })
+
 
 
 
 
         //Config
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'cligne').setScale(0.3);
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'cligne').setScale(0.43).setSize(150,150);
         this.player.setCollideWorldBounds(true);
 
         

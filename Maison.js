@@ -10,12 +10,7 @@ class Maison extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("maison", "Json/Maison.json");
-        this.load.image("fond_1","doc/galaxie.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('bout', "doc/faille1.png")
+
         
     }
     create() {

@@ -2,12 +2,7 @@ class Main extends Phaser.Scene {
     constructor() {
         super("Main");
     }
-    preload() {
-        this.load.image("bouton", "doc/étoile.png");
-        this.load.image("ecran", "doc/Menu.png")
-        this.load.image("fond","doc/Fond_Menu.png")
-        this.load.image("coment","doc/Commencement.png")
-    }
+    preload() {}
     create() {
         this.add.image(450, 475, "fond").setScale(0.75);
         this.add.image(450, 475, "ecran").setScale(0.41);

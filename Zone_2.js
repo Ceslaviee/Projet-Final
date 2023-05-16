@@ -8,13 +8,7 @@ class Zone_2 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
-        this.load.image("k2","doc/k2.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image("faille3","doc/faille3.png")
-        this.load.image('hor', "doc/horizon.png");
-        this.load.spritesheet("slime", "doc/slime.png",{frameWidth : 262, frameHeight: 192})
+
     }
     create() {
         this.add.image(1800, 680, 'k2').setScale(1.2);
@@ -84,6 +78,7 @@ class Zone_2 extends Phaser.Scene {
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            this.player.anims.play('anim1', true);
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
