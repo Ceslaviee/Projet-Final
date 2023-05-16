@@ -14,7 +14,7 @@ class Debut extends Phaser.Scene {
         this.load.tilemapTiledJSON("debut", "Json/Debut.json");
         this.load.image("fond_1","doc/galaxie.png")
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
+        //this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
         this.load.image('bout', "doc/faille1.png")
         
     }
@@ -44,29 +44,6 @@ class Debut extends Phaser.Scene {
 
         this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
-
-        content = "Ceci est un exemple de texte progressif.";
-        index = 0;
-        this.time.addEvent({
-            delay: 50,
-            callback: function() {
-              text.text += content[index];
-              index++;
-              if (index === content.length) {
-                clearInterval(timer);
-              }
-            }
-          });
-        
-          var timer = setInterval(function() {
-            if (index === content.length) {
-              clearInterval(timer);
-            } else {
-              text.text += content[index];
-              index++;
-            }
-          }, 50);
-
 
         
 
