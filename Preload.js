@@ -24,6 +24,7 @@ class Preload extends Phaser.Scene {
         this.load.image('mais2',"doc/Maison_2.png");
         this.load.image("porte", "doc/étoile.png");
         this.load.image("faille3","doc/faille3.png");
+        this.load.image('fin', "doc/fin.png")
 
         /* preload Textes */
         this.load.image('prélude', "doc/prélude.png");
@@ -36,10 +37,12 @@ class Preload extends Phaser.Scene {
         this.load.image('hor', "doc/horizon.png");
         this.load.image("k2","doc/k2.png");
         this.load.image("fond_2","doc/galaxie2.png");
+        this.load.image("fond_final","doc/rose.png")
 
         /* preload Animations */
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
         this.load.spritesheet("slime", "doc/slime.png",{frameWidth : 262, frameHeight: 192});
+        this.load.spritesheet("slimeR", "doc/slime2.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet('cligne', 'doc/blinkD.png',{frameWidth : 161, frameHeight: 217});
         
     }
