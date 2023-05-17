@@ -71,6 +71,8 @@ class Zone_1 extends Phaser.Scene {
         this.pre = this.add.image(450, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.pre,3000,5000)
 
+
+
         this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
@@ -83,20 +85,31 @@ class Zone_1 extends Phaser.Scene {
         }
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
-            
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
-            this.player.setVelocityY(-330);
+            this.player.setVelocityY(-450);
         }
 
 
     }
+    
     coAudio()
     {
         this.audio = this.sound.add('Dead_Ends',{
@@ -117,6 +130,7 @@ class Zone_1 extends Phaser.Scene {
             );
         }
     }
+
     fadeInAndOut(image, duration, fadeOutDelay) {
         
         const initialOpacity = image.alpha;

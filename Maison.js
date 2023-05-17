@@ -54,6 +54,7 @@ class Maison extends Phaser.Scene {
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            this.player.anims.play('idle', true).setScale(0.4).setSize(150,150)
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);

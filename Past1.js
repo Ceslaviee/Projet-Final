@@ -49,7 +49,7 @@ class Past1 extends Phaser.Scene {
 
 
         //Config
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'cligne').setScale(0.43).setSize(150,150);
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'cligne').setScale(0.33).setSize(150,150);
         this.player.setCollideWorldBounds(true);
 
         
@@ -74,6 +74,7 @@ class Past1 extends Phaser.Scene {
         this.gameButton = this.add.image(865,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
         this.gameButton.on("pointerdown", this.coAudio, this);
         
+        this.score = 0
         
 
     }
@@ -84,17 +85,26 @@ class Past1 extends Phaser.Scene {
         }
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(1260); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
-            this.player.anims.play('anim1', true);
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
 
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
-            this.player.setVelocityY(-400);
+            this.player.setVelocityY(-330);
         }
 
 

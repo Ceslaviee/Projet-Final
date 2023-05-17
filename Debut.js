@@ -45,20 +45,30 @@ class Debut extends Phaser.Scene {
         this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
-        
+        this.gauche = 0
 
     }
         
     update() {
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(1060); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
-            this.player.anims.play('anim1', true);
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
