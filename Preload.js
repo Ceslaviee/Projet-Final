@@ -8,8 +8,8 @@ class Preload extends Phaser.Scene {
         this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
         this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         this.load.tilemapTiledJSON("Guerr", "Json/Past2.json");
+        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         
 
         /* preload Sons */
@@ -21,9 +21,10 @@ class Preload extends Phaser.Scene {
         this.load.image('bout', "doc/faille1.png");
         this.load.image('souleil', "planetes/SoleilP.png");
         this.load.image('boute', "doc/faille2.png");
+        this.load.image('mais1', "doc/maison_1.png");
+        this.load.image('mais2',"doc/Maison_2.png");
         this.load.image('mais3',"doc/Maison_3.png");
         this.load.image('soleil', "planetes/Soleil.png");
-        this.load.image('mais2',"doc/Maison_2.png");
         this.load.image("porte", "doc/étoile.png");
         this.load.image("faille3","doc/faille3.png");
         this.load.image('fin', "doc/fin.png")

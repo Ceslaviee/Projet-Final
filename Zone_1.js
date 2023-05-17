@@ -44,9 +44,10 @@ class Zone_1 extends Phaser.Scene {
             const POcol = this.pickup.create(calque_point.x, calque_point.y, "soleil").setScale(0.3).body.setAllowGravity(false);
         });
 
-        this.add.image(130,760, 'mais2').setScale(0.17);
+        this.add.image(125,778, 'mais1').setScale(0.14);
         this.porte = this.physics.add.staticGroup();
         this.porte.create(125,850, 'porte').setScale(0.2);
+        this.porte.setVisible(false)
 
 
         //Config
@@ -64,16 +65,16 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
-        this.scoreTexte = this.add.text(880, 40, this.score, {
+        this.scoreTexte = this.add.text(1280, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
-        this.pre = this.add.image(450, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
+        this.pre = this.add.image(650, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.pre,3000,5000)
 
 
 
-        this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
+        this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
         
@@ -104,7 +105,7 @@ class Zone_1 extends Phaser.Scene {
 
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
-            this.player.setVelocityY(-450);
+            this.player.setVelocityY(-330);
         }
 
 
@@ -178,5 +179,9 @@ class Zone_1 extends Phaser.Scene {
     {
         this.scene.restart({coordX: 50, coordY: 840 })
 
+    }
+    texte()
+    {
+        
     }
 };
