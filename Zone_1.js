@@ -81,6 +81,7 @@ class Zone_1 extends Phaser.Scene {
         
     update() {
         if (this.cursors.space.isDown){
+            this.cameras.main.shake(200)
             this.changementZone()
         }
         if (this.cursors.left.isDown){ 
@@ -135,6 +136,7 @@ class Zone_1 extends Phaser.Scene {
     }
     changementZone()
     {
+        this.cameras.main.shake(200)
         this.scene.start("Past1",{ coordX : this.player.x, coordY : this.player.y})
     }
     switch1() 
