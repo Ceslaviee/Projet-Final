@@ -235,7 +235,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur == 0){
         this.parfois = this.add.text(230, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
     }
@@ -243,7 +243,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur1 == 0){
         this.parfois = this.add.text(630, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur1 = 1
         }
     }
@@ -251,7 +251,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur2 == 0){
         this.parfois = this.add.text(1130, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur2 = 1
         }
     }
@@ -259,7 +259,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur3 == 0){
         this.parfois = this.add.text(1730, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur3 = 1
         }
     }
@@ -267,7 +267,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur4 == 0){
         this.parfois = this.add.text(2330, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur4 = 1
         }
     }
@@ -275,7 +275,7 @@ class Zone_2 extends Phaser.Scene {
     {
         if (this.valeur5 == 0){
         this.parfois = this.add.text(2750, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,5000)
+        this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }
     }
