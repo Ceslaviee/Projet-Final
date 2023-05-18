@@ -64,6 +64,7 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
+
         this.score = 0
         this.scoreTexte = this.add.text(1280, 40, this.score, {
             fontSize : '32px', fill : "#000"
@@ -181,9 +182,5 @@ class Zone_1 extends Phaser.Scene {
     {
         this.scene.restart({coordX: 50, coordY: 840 })
 
-    }
-    texte()
-    {
-        
     }
 };
