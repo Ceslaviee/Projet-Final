@@ -8,16 +8,11 @@ class Past2 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("Guerre", "Json/Past2.json");
-        this.load.image("k","doc/k.png")
-        this.load.image('perso', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image("faille3","doc/faille3.png")
-        this.load.image('hor', "doc/horizon.png");
+
     }
     create() {
         this.add.image(1800, 680, 'k').setScale(1.2);
-        this.carteDuNiveau = this.add.tilemap("Guerre");
+        this.carteDuNiveau = this.add.tilemap("Guerr");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_sol = this.carteDuNiveau.createLayer("sol",this.tileset);
         this.calque_sol.setCollisionByProperty({ Dur: true })
@@ -35,7 +30,16 @@ class Past2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
 
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
+        this.add.image(1925,940,'pétales').setScale(0.95)
+        
+
+        this.slime3 =  this.physics.add.sprite(2780, 920, 'slime').setScale(0.4).setSize(75,75)
+        this.slime2 =  this.physics.add.sprite(2700, 920, 'slime').setScale(0.4).setSize(75,75)
+        this.slime3.anims.play('slime_back', true);
+        this.slime2.anims.play('slime', true);
+
+
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso2').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -46,12 +50,17 @@ class Past2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+        this.physics.add.collider(this.slime2, this.calque_sol);
+        this.physics.add.collider(this.slime3, this.calque_sol);
 
-        this.gameButton = this.add.image(865,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
+        this.gameButton = this.add.image(1065,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
-        this.hor = this.add.image(450, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
+        this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
+
+
+        
 
         
 
@@ -61,17 +70,29 @@ class Past2 extends Phaser.Scene {
             this.changementZone()
         }
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-360); 
+            this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
         }
+
 
     }
     fadeInAndOut(image, duration, fadeOutDelay) {

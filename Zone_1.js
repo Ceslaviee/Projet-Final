@@ -10,14 +10,7 @@ class Zone_1 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
-        this.load.image("fond_1","doc/galaxie.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image('soleil', "planetes/Soleil.png");
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('prélude', "doc/prélude.png");
-        this.load.image('bout', "doc/faille1.png")
+
         
     }
     create() {
@@ -29,6 +22,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
         //Audio 
+        //this.add.text(100, 800, 'Appuie sur Espace', { font: "25px SchwarzKopf", fill: "white", align:"center" });
 
 
 
@@ -50,6 +44,11 @@ class Zone_1 extends Phaser.Scene {
             const POcol = this.pickup.create(calque_point.x, calque_point.y, "soleil").setScale(0.3).body.setAllowGravity(false);
         });
 
+        this.add.image(125,778, 'mais1').setScale(0.14);
+        this.porte = this.physics.add.staticGroup();
+        this.porte.create(125,850, 'porte').setScale(0.2);
+        this.porte.setVisible(false)
+
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -63,22 +62,24 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
+        this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
-        this.scoreTexte = this.add.text(880, 40, this.score, {
+        this.scoreTexte = this.add.text(1280, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
-        this.pre = this.add.image(450, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
+        this.pre = this.add.image(650, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.pre,3000,5000)
 
-        this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
+
+
+        this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
         
 
     }
-        
     update() {
         if (this.cursors.space.isDown){
             this.cameras.main.shake(200)
@@ -86,12 +87,23 @@ class Zone_1 extends Phaser.Scene {
         }
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
@@ -99,6 +111,7 @@ class Zone_1 extends Phaser.Scene {
 
 
     }
+    
     coAudio()
     {
         this.audio = this.sound.add('Dead_Ends',{
@@ -106,6 +119,20 @@ class Zone_1 extends Phaser.Scene {
         })
             this.audio.play()
     }
+    entree()
+    {
+        console.log("dlf")
+        if (this.cursors.shift.isDown){
+            console.log("log")
+            this.scene.start("Maison",{
+
+                coordX: 1816,
+                coordY: 809,
+            }
+            );
+        }
+    }
+
     fadeInAndOut(image, duration, fadeOutDelay) {
         
         const initialOpacity = image.alpha;
@@ -154,5 +181,9 @@ class Zone_1 extends Phaser.Scene {
     {
         this.scene.restart({coordX: 50, coordY: 840 })
 
+    }
+    texte()
+    {
+        
     }
 };

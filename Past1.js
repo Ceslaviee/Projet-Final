@@ -10,14 +10,6 @@ class Past1 extends Phaser.Scene {
         this.coordY = data.coordY
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
-        this.load.image("fond_2","doc/galaxie2.png")
-        this.load.image('pers', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
-        this.load.image('soleil', "planetes/Soleil.png");
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('boute', "doc/faille2.png");
-        
     }
     create() {
 
@@ -43,14 +35,27 @@ class Past1 extends Phaser.Scene {
             gravity : false
         })
         this.calque_point.objects.forEach(calque_point => {
-            const POcol = this.pickup.create(calque_point.x, calque_point.y, "soleil").setScale(0.3).body.setAllowGravity(false);
+            const POcol = this.pickup.create(calque_point.x, calque_point.y, "souleil").setScale(0.3).body.setAllowGravity(false);
         });
+
+        this.add.image(130,760, 'mais2').setScale(0.17);
+        this.add.image(3600 ,760, 'mais3').setScale(0.17);
+        this.porte = this.physics.add.staticGroup();
+        this.porte.create(125,850, 'porte').setScale(0.2);
+
+
+
+
 
 
         //Config
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'pers').setScale(0.3);
-        this.player.setBounce(0.2);
+        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'marche').setScale(0.33).setSize(150,150);
         this.player.setCollideWorldBounds(true);
+
+        
+
+
+
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
         this.cameras.main.setBounds(0, 0, 3840, 960);
@@ -59,15 +64,17 @@ class Past1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_switch,this.switch1, null, this );
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
+        this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
         this.score = 0
         this.scoreTexte = this.add.text(880, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
-        this.gameButton = this.add.image(865,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
+        this.gameButton = this.add.image(1065,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
         this.gameButton.on("pointerdown", this.coAudio, this);
-
+        
+        this.score = 0
         
 
     }
@@ -78,12 +85,23 @@ class Past1 extends Phaser.Scene {
         }
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(560); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
@@ -109,6 +127,19 @@ class Past1 extends Phaser.Scene {
         this.scene.start("Zone_1",{ coordX : this.player.x, coordY : this.player.y})
 
 
+    }
+    entree()
+    {
+        console.log("dlf")
+        if (this.cursors.shift.isDown){
+            console.log("log")
+            this.scene.start("Maison",{
+
+                coordX: 1816,
+                coordY: 809,
+            }
+            );
+        }
     }
     switch1() 
     {
