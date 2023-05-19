@@ -47,6 +47,12 @@ class Debut extends Phaser.Scene {
 
         this.gauche = 0
 
+        this.dia = this.add.text(230, 790, 'Il se fait tard je ferais mieux de rentrer.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
+        this.fadeInAndOut(this.dia,3000,2000)
+
+        this.valeur = 0
+        this.valeur1 = 0
+
     }
         
     update() {

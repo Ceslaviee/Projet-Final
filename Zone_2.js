@@ -234,7 +234,7 @@ class Zone_2 extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(230, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(230, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }

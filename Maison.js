@@ -21,8 +21,6 @@ class Maison extends Phaser.Scene {
         this.calque_Murs = this.carteDuNiveau.createLayer("Murs",this.tileset);
         this.calque_Murs.setCollisionByProperty({ Dur: true })
 
-        this.calque_Stands = this.carteDuNiveau.createLayer("Stands",this.tileset);
-
         this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
@@ -48,13 +46,23 @@ class Maison extends Phaser.Scene {
     update() {
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-260); 
+            this.gauche = 1
+            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(960); 
+            this.player.setVelocityX(260);
+            this.gauche = 0
+            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
         else{ // sinon
             this.player.setVelocityX(0);
-            this.player.anims.play('idle', true).setScale(0.4).setSize(150,150)
+            if (this.gauche == 0){
+                this.player.anims.play("idle_droite")
+            }
+            else{
+                this.player.anims.play("idle_gauche")
+            }
+
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);

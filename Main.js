@@ -14,7 +14,7 @@ class Main extends Phaser.Scene {
     update() {}
     launchGame()
     {
-        this.scene.start('Zone_2',{
+        this.scene.start('Debut',{
             coordX: 80,
             coordY: 840    
         }
