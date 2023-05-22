@@ -55,7 +55,7 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.sadslime, this.calque_sol);
 
 
-        this.gameButton = this.add.image(1265,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
+        this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);

@@ -95,7 +95,7 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte4, this.texte4, null, this);
         this.physics.add.overlap(this.player, this.porte5, this.texte5, null, this);
 
-        this.gameButton = this.add.image(1065,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
+        this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
@@ -244,7 +244,7 @@ class Past2 extends Phaser.Scene {
     texte5()
     {
         if (this.valeur5 == 0){
-        this.parfois = this.add.text(2750, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2830, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }
