@@ -41,41 +41,6 @@ class Zone_2 extends Phaser.Scene {
 
         this.side = 0
 
-        /* texte */
-        this.porte = this.physics.add.staticGroup();
-        this.porte.create(210,920, 'porte').setScale(0.1).setSize(100,100);
-        this.porte.setVisible(false)
-
-        /* texte1 */
-
-        this.porte1 = this.physics.add.staticGroup();
-        this.porte1.create(630,920, 'porte').setScale(0.2);
-        this.porte1.setVisible(false)
-
-        /* texte2 */
-
-        this.porte2 = this.physics.add.staticGroup();
-        this.porte2.create(1130,920, 'porte').setScale(0.2);
-        this.porte2.setVisible(false)
-
-        /* texte3 */
-
-        this.porte3 = this.physics.add.staticGroup();
-        this.porte3.create(1730,920, 'porte').setScale(0.2);
-        this.porte3.setVisible(false)
-
-        /* texte4 */        
-
-        this.porte4 = this.physics.add.staticGroup();
-        this.porte4.create(2330,920, 'porte').setScale(0.2);
-        this.porte4.setVisible(false)
-
-        /* texte5 */        
-
-        this.porte5 = this.physics.add.staticGroup();
-        this.porte5.create(2830,920, 'porte').setScale(0.2);
-        this.porte5.setVisible(false)
-
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
         this.player.setCollideWorldBounds(true);
 
@@ -89,15 +54,6 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.slime, this.calque_sol);
         this.physics.add.collider(this.sadslime, this.calque_sol);
 
-        /* overlaps */ 
-
-        this.physics.add.overlap(this.player, this.porte, this.texte, null, this);
-        this.physics.add.overlap(this.player, this.porte1, this.texte1, null, this);
-        this.physics.add.overlap(this.player, this.porte2, this.texte2, null, this);
-        this.physics.add.overlap(this.player, this.porte3, this.texte3, null, this);
-        this.physics.add.overlap(this.player, this.porte4, this.texte4, null, this);
-        this.physics.add.overlap(this.player, this.porte5, this.texte5, null, this);
-
 
         this.gameButton = this.add.image(1265,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
@@ -107,13 +63,6 @@ class Zone_2 extends Phaser.Scene {
 
         
         this.add.image(2780,930,'fleur').setScale(0.5)
-
-        this.valeur = 0
-        this.valeur1 = 0
-        this.valeur2 = 0
-        this.valeur3 = 0
-        this.valeur4 = 0
-        this.valeur5 = 0
 
         
 
@@ -225,53 +174,5 @@ class Zone_2 extends Phaser.Scene {
             coordY: 900,
         }
         )
-    }
-    texte()
-    {
-        if (this.valeur == 0){
-        this.parfois = this.add.text(210, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
-        this.valeur = 1
-        }
-    }
-    texte1()
-    {
-        if (this.valeur1 == 0){
-        this.parfois = this.add.text(630, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
-        this.valeur1 = 1
-        }
-    }
-    texte2()
-    {
-        if (this.valeur2 == 0){
-        this.parfois = this.add.text(1130, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
-        this.valeur2 = 1
-        }
-    }
-    texte3()
-    {
-        if (this.valeur3 == 0){
-        this.parfois = this.add.text(1730, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
-        this.valeur3 = 1
-        }
-    }
-    texte4()
-    {
-        if (this.valeur4 == 0){
-        this.parfois = this.add.text(2330, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
-        this.valeur4 = 1
-        }
-    }
-    texte5()
-    {
-        if (this.valeur5 == 0){
-        this.parfois = this.add.text(2750, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2500)
-        this.valeur5 = 1
-        }
     }
 };

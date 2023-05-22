@@ -63,9 +63,11 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
+        console.log(this.score);
+
 
         this.scoreTexte = this.add.text(1280, 40, this.score, {
-            fontSize : '32px', fill : "#000"
+            fontSize : '32px', fill : "#FFFFFF"
         }).setScrollFactor(0)
 
         this.pre = this.add.image(650, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);

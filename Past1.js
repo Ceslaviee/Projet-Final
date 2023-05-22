@@ -24,7 +24,6 @@ class Past1 extends Phaser.Scene {
         this.calque_switch.setCollisionByProperty({ Dur: true })
         this.calque_switch.setVisible(false)
 
-
         this.calque_chute = this.carteDuNiveau.createLayer("chute",this.tileset);
         this.calque_chute.setCollisionByProperty({ Dur: true })
         this.calque_chute.setVisible(false)
@@ -64,8 +63,6 @@ class Past1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
-
-        this.score = this.score
         this.scoreTexte = this.add.text(880, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
