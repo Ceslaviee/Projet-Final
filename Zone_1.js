@@ -4,10 +4,9 @@ class Zone_1 extends Phaser.Scene {
         super("Zone_1");
     }
     init(data){
-        this.spawnX = data.spawnX
-        this.spawnY = data.spawnY
         this.coordX = data.coordX
         this.coordY = data.coordY
+        this.score = data.score
     }
     preload() {
 
@@ -65,7 +64,6 @@ class Zone_1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
 
 
-        this.score = 0
         this.scoreTexte = this.add.text(1280, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
@@ -165,7 +163,7 @@ class Zone_1 extends Phaser.Scene {
     changementZone()
     {
         this.cameras.main.shake(200)
-        this.scene.start("Past1",{ coordX : this.player.x, coordY : this.player.y})
+        this.scene.start("Past1",{ coordX : this.player.x, coordY : this.player.y, score : this.score})
     }
     switch1() 
     {

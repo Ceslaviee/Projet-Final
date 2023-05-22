@@ -6,6 +6,7 @@ class Past2 extends Phaser.Scene {
     init(data){
         this.coordX = data.coordX
         this.coordY = data.coordY
+        this.score = data.score
     }
     preload() {
 
@@ -16,6 +17,7 @@ class Past2 extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_sol = this.carteDuNiveau.createLayer("sol",this.tileset);
         this.calque_sol.setCollisionByProperty({ Dur: true })
+        this.calque_sol.setVisible(false)
 
 
         this.calque_chute1 = this.carteDuNiveau.createLayer("chute1",this.tileset);
@@ -29,8 +31,12 @@ class Past2 extends Phaser.Scene {
         this.calque_change2 = this.carteDuNiveau.createLayer("change2",this.tileset);
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
-
+        
+        this.incidence = this.physics.add.staticGroup();
+        this.plate = this.physics.add.group({allowGravity : false});
         this.add.image(1925,940,'pétales').setScale(0.95)
+        this.incidence.create(260,920,'plante').setScale(2).setAlpha(1)
+        this.plate.create(260,960,'plateforme').setScale(1).setAlpha(0).setPushable(false).setSize(100,15)
         
 
         this.slime3 =  this.physics.add.sprite(2780, 920, 'slime').setScale(0.4).setSize(75,75)
@@ -46,18 +52,20 @@ class Past2 extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, 3840, 960);
         this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
-        this.physics.add.collider(this.player, this.calque_sol);
-        this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
+        this.physics.add.collider(this.player, this.calque_sol); 
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
         this.physics.add.collider(this.slime2, this.calque_sol);
         this.physics.add.collider(this.slime3, this.calque_sol);
+        this.physics.add.overlap(this.player, this.incidence, this.interaction, null, this);
+        this.physics.add.collider(this.plate, this.player);
 
         this.gameButton = this.add.image(1065,845,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
+
 
 
         
@@ -126,7 +134,7 @@ class Past2 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.scene.start("Zone_2",{ coordX : this.player.x, coordY : this.player.y})
+        this.scene.start("Zone_2",{ coordX : this.player.x, coordY : this.player.y, score : this.score})
     }
     switch1()
     {
@@ -136,6 +144,15 @@ class Past2 extends Phaser.Scene {
         }
         )
     }
+    interaction()
+    {
+        if (this.cursors.shift.isDown){
+            this.incidence.setAlpha(0)
+            this.plate.setAlpha(1)
+            this.plate.setVelocityY(-40)
+
+        }
+    }
     switch2()
     {
         this.scene.start("Fin",{
@@ -143,10 +160,5 @@ class Past2 extends Phaser.Scene {
             spawnY: 900,
         }
         )
-    }
-    respawn()
-    {
-        this.scene.restart({coordX: 97, coordY: 900})
-
     }
 };

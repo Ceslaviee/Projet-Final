@@ -6,6 +6,7 @@ class Zone_2 extends Phaser.Scene {
     init(data){
         this.coordX = data.coordX
         this.coordY = data.coordY
+        this.score = data.score
     }
     preload() {
 
@@ -31,7 +32,7 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change2.setVisible(false)
 
         this.sadslime = this.physics.add.sprite(2700, 920, 'sadslime').setScale(0.4).setSize(75,75)
-        this.slime = this.physics.add.sprite(150, 920, 'slimeR').setScale(0.4).setSize(75,75)
+        this.slime = this.physics.add.sprite(650, 920, 'slimeR').setScale(0.4).setSize(75,75)
         this.sadslime.anims.play('sadslime', true)
         //this.slime.vaversladroite=true;
         this.slimeX = this.slime.x
@@ -42,7 +43,7 @@ class Zone_2 extends Phaser.Scene {
 
         /* texte */
         this.porte = this.physics.add.staticGroup();
-        this.porte.create(230,920, 'porte').setScale(0.2);
+        this.porte.create(210,920, 'porte').setScale(0.1).setSize(100,100);
         this.porte.setVisible(false)
 
         /* texte1 */
@@ -83,7 +84,6 @@ class Zone_2 extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_sol);
-        this.physics.add.collider(this.player, this.calque_chute1,this.respawn1, null, this )
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
         this.physics.add.collider(this.slime, this.calque_sol);
@@ -157,7 +157,7 @@ class Zone_2 extends Phaser.Scene {
             this.slime.anims.play('animslime_back', true);
 
         }
-        if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) < 1000){
+        if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) < 800){
             this.slime.setVelocityX(this.slimespeed)
             console.log("lol")
 
@@ -201,7 +201,7 @@ class Zone_2 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.scene.start("Past2",{ coordX : this.player.x, coordY : this.player.y})
+        this.scene.start("Past2",{ coordX : this.player.x, coordY : this.player.y, score : this.score})
     }
     coAudio()
     {
@@ -226,15 +226,10 @@ class Zone_2 extends Phaser.Scene {
         }
         )
     }
-    respawn1()
-    {
-        this.scene.restart({coordX: 97, coordY: 900})
-
-    }
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(230, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(210, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
