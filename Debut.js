@@ -4,19 +4,11 @@ class Debut extends Phaser.Scene {
         super("Debut");
     }
     init(data){
-        this.spawnX = data.spawnX
-        this.spawnY = data.spawnY
         this.coordX = data.coordX
         this.coordY = data.coordY
+        this.score = data.score
     }
     preload() {
-        this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.tilemapTiledJSON("debut", "Json/Debut.json");
-        this.load.image("fond_1","doc/galaxie.png")
-        this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
-        //this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
-        this.load.image('bout', "doc/faille1.png")
-        
     }
     create() {
 
@@ -25,29 +17,58 @@ class Debut extends Phaser.Scene {
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_herbe = this.carteDuNiveau.createLayer("herbe",this.tileset);
         this.calque_herbe.setCollisionByProperty({ Dur: true })
+        
+        this.calque_redem = this.carteDuNiveau.createLayer("redem",this.tileset);
+        this.calque_redem.setCollisionByProperty({ Dur: true })
+        this.calque_redem.setVisible(false)
 
-        this.calque_meson = this.carteDuNiveau.createLayer("meson",this.tileset);
-        this.calque_meson.setCollisionByProperty({ Dur: true })
-        this.calque_meson.setVisible(false)
+        
+
+        this.incidence = this.physics.add.staticGroup();
+        this.incidence1 = this.physics.add.staticGroup();
+        this.incidence2 = this.physics.add.staticGroup();
+        this.incidence3 = this.physics.add.staticGroup();
+        this.incidence4 = this.physics.add.staticGroup();
+        this.incidence5 = this.physics.add.staticGroup();
+        this.incidence6  = this.physics.add.staticGroup();
+
+        this.incidence.create(96,383,'plante2').setScale(2).setAlpha(1)
+        this.incidence1.create(511,760,'plante2').setScale(2).setAlpha(1)
+        this.incidence2.create(1649,898,'plante2').setScale(2).setAlpha(1)
+        this.incidence3.create(2542,830,'plante2').setScale(2).setAlpha(1)
+        this.incidence4.create(3456,832,'plante2').setScale(2).setAlpha(1)
+        this.incidence5.create(1919,349,'plante2').setScale(2).setAlpha(1)
+        this.incidence6.create(1230,512,'plante2').setScale(2).setAlpha(1)
+
+
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
-        this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
         this.cameras.main.setBounds(0, 0, 3840, 960);
+        this.cameras.main.zoom= 1.3;
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_herbe);
-        this.physics.add.collider(this.player, this.calque_meson,this.switch1, null, this );
+        this.physics.add.overlap(this.player, this.incidence, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence1, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence2, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence3, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence4, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence5, this.point, null, this);
+        this.physics.add.overlap(this.player, this.incidence6, this.point, null, this);
 
 
-        this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
+
+
+        this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
         this.gauche = 0
+        this.points = 1
 
-        this.dia = this.add.text(230, 790, 'Il se fait tard je ferais mieux de rentrer.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
+        this.dia = this.add.text(50, 790, 'Il se fait tard je ferais mieux de rentrer.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
         this.fadeInAndOut(this.dia,3000,2000)
 
         this.valeur = 0
@@ -82,6 +103,18 @@ class Debut extends Phaser.Scene {
 
 
     }
+    point(player,object)
+    {
+        object.destroy()
+        console.log(this.points)
+        if (this.points == 7){
+            this.switch1()
+            
+        }
+        else{
+            this.points += 1
+        }
+    }
     coAudio()
     {
         this.audio = this.sound.add('Dead_Ends',{
@@ -115,12 +148,8 @@ class Debut extends Phaser.Scene {
     {
         this.scene.start('Zone_1',{
             coordX: 50,
-            coordY: 840    
+            coordY: 840,    
+            score: 0
         }
         );}
-    
-    défilage()
-    {
-
-    }
 }

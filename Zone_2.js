@@ -54,6 +54,11 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.slime, this.calque_sol);
         this.physics.add.collider(this.sadslime, this.calque_sol);
 
+        //this.bombs = this.physics.add.group();
+        //this.physics.add.collider(this.bombs, this.calque_sol);
+        //this.physics.add.collider(player, bombs, hitBomb, null, this);
+
+
 
         this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
@@ -126,6 +131,10 @@ class Zone_2 extends Phaser.Scene {
         
             
     }
+    /*hitBomb(player, bomb){
+        this.physics.pause();
+        }
+    */
     fadeInAndOut(image, duration, fadeOutDelay) {
         
         const initialOpacity = image.alpha;

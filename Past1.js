@@ -67,7 +67,7 @@ class Past1 extends Phaser.Scene {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
 
-        this.gameButton = this.add.image(1065,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
+        this.gameButton = this.add.image(1265,845,"boute").setInteractive().setScale(0.04).setScrollFactor(0);
         this.gameButton.on("pointerdown", this.coAudio, this);
         
         

@@ -9,6 +9,7 @@ class Preload extends Phaser.Scene {
         this.load.tilemapTiledJSON("Jardin", "Json/Zone_1.json");
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
         this.load.tilemapTiledJSON("Guerr", "Json/Past2.json");
+        this.load.tilemapTiledJSON("debut", "Json/Debut.json");
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
         
 
@@ -32,6 +33,7 @@ class Preload extends Phaser.Scene {
         this.load.image('pétales',"doc/pétales.png");
         this.load.image('plante',"doc/plante.png")
         this.load.image('plateforme',"doc/plateforme.png")
+        this.load.image('plante2',"doc/plante2.png")
 
         /* preload Textes */
         this.load.image('prélude', "doc/prélude.png");

@@ -204,7 +204,7 @@ class Past2 extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(210, 790, 'Il était une fois, un royaume lointain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(210, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
@@ -212,7 +212,7 @@ class Past2 extends Phaser.Scene {
     texte1()
     {
         if (this.valeur1 == 0){
-        this.parfois = this.add.text(630, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(630, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur1 = 1
         }
@@ -220,7 +220,7 @@ class Past2 extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.parfois = this.add.text(1130, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1130, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur2 = 1
         }
@@ -228,7 +228,7 @@ class Past2 extends Phaser.Scene {
     texte3()
     {
         if (this.valeur3 == 0){
-        this.parfois = this.add.text(1730, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1730, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur3 = 1
         }
@@ -236,7 +236,7 @@ class Past2 extends Phaser.Scene {
     texte4()
     {
         if (this.valeur4 == 0){
-        this.parfois = this.add.text(2330, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2330, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur4 = 1
         }
@@ -244,7 +244,7 @@ class Past2 extends Phaser.Scene {
     texte5()
     {
         if (this.valeur5 == 0){
-        this.parfois = this.add.text(2830, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2830, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }
