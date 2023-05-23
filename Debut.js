@@ -22,7 +22,7 @@ class Debut extends Phaser.Scene {
         this.calque_redem.setCollisionByProperty({ Dur: true })
         this.calque_redem.setVisible(false)
 
-        
+        this.transition = this.add.image(620, 480, 'noir').setAlpha(0)
 
         this.incidence = this.physics.add.staticGroup();
         this.incidence1 = this.physics.add.staticGroup();
@@ -40,6 +40,7 @@ class Debut extends Phaser.Scene {
         this.incidence5.create(1919,349,'plante2').setScale(2).setAlpha(1)
         this.incidence6.create(1230,512,'plante2').setScale(2).setAlpha(1)
 
+        this.add.image(1250, 50, 'plante2').setScale(4).setScrollFactor(0)
 
 
         //Config
@@ -48,18 +49,21 @@ class Debut extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
         this.cameras.main.setBounds(0, 0, 3840, 960);
-        this.cameras.main.zoom= 1.3;
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_herbe);
         this.physics.add.overlap(this.player, this.incidence, this.point, null, this);
-        this.physics.add.overlap(this.player, this.incidence1, this.point, null, this);
+        this.tutoriel = this.physics.add.overlap(this.player, this.incidence1, this.tuto, null, this);
         this.physics.add.overlap(this.player, this.incidence2, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence3, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence4, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence5, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence6, this.point, null, this);
 
+        this.TexteScore = this.add.text(1140, 35, this.points, {
+            fontSize : '32px', fill : "#FFFFFF"
+        }).setScrollFactor(0)
 
+        this.add.text(1170, 35, '/ 7',{ font: "30px SchwarzKopf New", fill: "white", align:"center"}).setAlpha(1).setScrollFactor(0)
 
 
         this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
@@ -73,6 +77,8 @@ class Debut extends Phaser.Scene {
 
         this.valeur = 0
         this.valeur1 = 0
+
+        this.test = 0
 
     }
         
@@ -105,15 +111,23 @@ class Debut extends Phaser.Scene {
     }
     point(player,object)
     {
-        object.destroy()
-        console.log(this.points)
-        if (this.points == 7){
-            this.switch1()
-            
+        if (this.cursors.shift.isDown){
+            object.destroy()
+            console.log(this.points)
+            if (this.points == 7){
+                this.switch1()
+                
+            }
+            else{
+                this.TexteScore.setText(this.points)
+                this.points += 1
+                this.test += 1
+
+
+            }
         }
-        else{
-            this.points += 1
-        }
+        
+
     }
     coAudio()
     {
@@ -121,6 +135,21 @@ class Debut extends Phaser.Scene {
             volume : 0.1,
         })
             this.audio.play()
+    }
+    tuto()
+    {
+        if (this.test == 0)
+        {this.physics.pause()
+        this.time.delayedCall(3000, this.defreeze,[],this)
+        this.event = this.add.text(511, 620, 'Appuyez sur Shift pour interagir.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.event, 3000, 1000)
+        this.tutoriel = this.physics.add.overlap(this.player, this.incidence1, this.point, null, this);        
+        this.test = 1}
+        
+    }
+    defreeze()
+    {
+        this.physics.resume()
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
         

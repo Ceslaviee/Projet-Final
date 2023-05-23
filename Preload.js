@@ -49,6 +49,7 @@ class Preload extends Phaser.Scene {
         this.load.image("fond_final","doc/rose.png");
         this.load.image("fleur","doc/fleur.png");
         this.load.image("hf_fleur","doc/hf_fleur.png");
+        this.load.image("noir","doc/noir.png")
 
         /* preload Animations */
         this.load.image('perso', 'doc/Gaïa.png',{ frameWidth: 32, frameHeight: 65 });
