@@ -12,7 +12,7 @@ class Debut extends Phaser.Scene {
     }
     create() {
 
-        this.add.image(1800, 480, 'fond_1').setScale(1.2);
+        this.add.image(1800, 480, 'fond_1').setScale(1.05).setScrollFactor(0);
         this.carteDuNiveau = this.add.tilemap("debut");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_herbe = this.carteDuNiveau.createLayer("herbe",this.tileset);
@@ -52,7 +52,7 @@ class Debut extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_herbe);
         this.physics.add.overlap(this.player, this.incidence, this.point, null, this);
-        this.tutoriel = this.physics.add.overlap(this.player, this.incidence1, this.tuto, null, this);
+        this.eel = this.physics.add.overlap(this.player, this.incidence1, this.tuto, null, this);
         this.physics.add.overlap(this.player, this.incidence2, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence3, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence4, this.point, null, this);
