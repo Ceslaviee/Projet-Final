@@ -149,10 +149,6 @@ class Preload extends Phaser.Scene {
             repeat: -1
         })
 
-
-        this.player = this.physics.add.sprite(this.coordX, this.coordY, 'cligne').setScale(0.43).setSize(150,150);
-        this.player.setCollideWorldBounds(true);
-
         
         this.scene.start('Main')
     }   

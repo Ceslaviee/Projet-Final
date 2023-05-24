@@ -15,7 +15,6 @@ class Maison extends Phaser.Scene {
     }
     create() {
 
-        this.add.image(1800, 480, 'fond_1').setScale(1.2);
         this.carteDuNiveau = this.add.tilemap("maison");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_Murs = this.carteDuNiveau.createLayer("Murs",this.tileset);
@@ -23,6 +22,8 @@ class Maison extends Phaser.Scene {
 
         this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
         this.calque_sortie.setCollisionByProperty({ Dur: true })
+
+        this.add.image(1800, 480, 'noir').setScale(1.2);
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -34,23 +35,18 @@ class Maison extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
         this.physics.add.collider(this.player, this.calque_sortie,this.switch1, null, this );
-
-
-        this.gameButton = this.add.image(865,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
-        this.gameButton.on("pointerdown", this.coAudio, this);
-
         
 
     }
         
     update() {
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-260); 
+            this.player.setVelocityX(-160); 
             this.gauche = 1
             this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260);
+            this.player.setVelocityX(160);
             this.gauche = 0
             this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }

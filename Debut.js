@@ -115,7 +115,9 @@ class Debut extends Phaser.Scene {
             object.destroy()
             console.log(this.points)
             if (this.points == 7){
-                this.switch1()
+                this.physics.pause()
+                this.cameras.main.fadeOut(5000, 0, 0, 0)
+                this.time.delayedCall(5000,this.switch1,[],this)
                 
             }
             else{
