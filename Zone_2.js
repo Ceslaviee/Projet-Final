@@ -33,6 +33,7 @@ class Zone_2 extends Phaser.Scene {
 
         this.sadslime = this.physics.add.sprite(2700, 920, 'sadslime').setScale(0.4).setSize(75,75)
         this.slime = this.physics.add.sprite(650, 920, 'slimeR').setScale(0.4).setSize(75,75)
+        this.feu = this.physics.add.sprite(1650, 320, 'fire').setScale(0.7).setSize(75,75)
         this.sadslime.anims.play('sadslime', true)
         //this.slime.vaversladroite=true;
         this.slimeX = this.slime.x
@@ -51,6 +52,7 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_sol);
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+        this.physics.add.collider(this.feu, this.calque_sol);
         this.physics.add.collider(this.slime, this.calque_sol);
         this.physics.add.collider(this.sadslime, this.calque_sol);
 
@@ -62,12 +64,16 @@ class Zone_2 extends Phaser.Scene {
 
         this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
-            
+        this.slime.anims.play('animslime', true);
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
 
         
         this.add.image(2780,930,'fleur').setScale(0.5)
+
+        this.feu.anims.play('fire', true);
+
+
 
         
 

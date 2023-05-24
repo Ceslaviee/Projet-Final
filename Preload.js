@@ -61,11 +61,19 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet('cligne', 'doc/blinkD.png',{frameWidth : 161, frameHeight: 217});
         this.load.spritesheet('stop', 'doc/idle.png',{frameWidth : 161, frameHeight: 217});
         this.load.spritesheet('marche', 'doc/animation.png',{frameWidth : 168, frameHeight: 230});
+        this.load.spritesheet('fire','doc/fire.png',{frameWidth : 210, frameHeight: 158})
         this.load.image('perso2', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         
         
     }
     create() {  
+
+        this.anims.create({
+            key: 'fire',
+            frames: this.anims.generateFrameNumbers('fire', {start:0,end:5}),
+            frameRate: 5,
+            repeat: -1
+        })
 
         this.anims.create({
             key: 'anim1',

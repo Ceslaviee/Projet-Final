@@ -63,12 +63,6 @@ class Debut extends Phaser.Scene {
             fontSize : '32px', fill : "#FFFFFF"
         }).setScrollFactor(0)
 
-        this.add.text(1170, 35, '/ 7',{ font: "30px SchwarzKopf New", fill: "white", align:"center"}).setAlpha(1).setScrollFactor(0)
-
-
-        this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
-        this.gameButton.on("pointerdown", this.coAudio, this);
-
         this.gauche = 0
         this.points = 1
 
@@ -143,7 +137,7 @@ class Debut extends Phaser.Scene {
         if (this.test == 0)
         {this.physics.pause()
         this.time.delayedCall(3000, this.defreeze,[],this)
-        this.event = this.add.text(511, 620, 'Appuyez sur Shift pour interagir.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.event = this.add.text(511, 620, 'Appuyez sur Shift pour interagir.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.event, 3000, 1000)
         this.tutoriel = this.physics.add.overlap(this.player, this.incidence1, this.point, null, this);        
         this.test = 1}
