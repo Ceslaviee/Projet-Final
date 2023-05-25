@@ -34,6 +34,8 @@ class Preload extends Phaser.Scene {
         this.load.image('plante',"doc/plante.png")
         this.load.image('plateforme',"doc/plateforme.png")
         this.load.image('plante2',"doc/plante2.png")
+        this.load.image('filante','doc/filante.png')
+        this.load.image('clef','doc/clef.png')
 
         /* preload Textes */
         this.load.image('prélude', "doc/prélude.png");
@@ -62,6 +64,7 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet('stop', 'doc/idle.png',{frameWidth : 161, frameHeight: 217});
         this.load.spritesheet('marche', 'doc/animation.png',{frameWidth : 168, frameHeight: 230});
         this.load.spritesheet('fire','doc/fire.png',{frameWidth : 210, frameHeight: 158})
+        this.load.spritesheet('fire2','doc/feu.png',{frameWidth : 210, frameHeight: 158})
         this.load.image('perso2', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
         
         
@@ -71,9 +74,18 @@ class Preload extends Phaser.Scene {
         this.anims.create({
             key: 'fire',
             frames: this.anims.generateFrameNumbers('fire', {start:0,end:5}),
-            frameRate: 5,
+            frameRate: 4,
             repeat: -1
         })
+
+        this.anims.create({
+            key: 'fire2',
+            frames: this.anims.generateFrameNumbers('fire2', {start:0,end:5}),
+            frameRate: 4,
+            repeat: -1
+        })
+
+
 
         this.anims.create({
             key: 'anim1',

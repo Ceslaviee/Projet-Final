@@ -2,6 +2,7 @@ class Past2 extends Phaser.Scene {
 
     constructor() {
         super("Past2");
+        this.cle = false
     }
     init(data){
         this.coordX = data.coordX
@@ -13,11 +14,18 @@ class Past2 extends Phaser.Scene {
     }
     create() {
         this.add.image(1800, 680, 'k').setScale(1.2);
+
+        this.add.image(1925,920,'pétales').setScale(0.95)
+
+        this.filant = this.physics.add.sprite(300, 40, 'filante').setScale(0.2)
+        this.filant.setVelocityX(1300);
+        this.filant.setVelocityY(450);
+        this.filant.body.setAllowGravity(false);
+
         this.carteDuNiveau = this.add.tilemap("Guerr");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_sol = this.carteDuNiveau.createLayer("sol",this.tileset);
         this.calque_sol.setCollisionByProperty({ Dur: true })
-        this.calque_sol.setVisible(false)
 
 
         this.calque_chute1 = this.carteDuNiveau.createLayer("chute1",this.tileset);
@@ -32,9 +40,13 @@ class Past2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
         
+        this.ouvre = this.physics.add.staticGroup();
+        if(this.cle == false){
+            this.ouvre.create(1750,920,'clef').setScale(0.5).setAlpha(1)
+        }
+
         this.incidence = this.physics.add.staticGroup();
         this.plate = this.physics.add.group({allowGravity : false});
-        this.add.image(1925,940,'pétales').setScale(0.95)
         this.incidence.create(260,920,'plante').setScale(2).setAlpha(1)
         this.plate.create(260,960,'plateforme').setScale(1).setAlpha(0).setPushable(false).setSize(100,15)
         
@@ -83,7 +95,9 @@ class Past2 extends Phaser.Scene {
         this.physics.add.collider(this.slime2, this.calque_sol);
         this.physics.add.collider(this.slime3, this.calque_sol);
         this.physics.add.overlap(this.player, this.incidence, this.interaction, null, this);
+        this.physics.add.overlap(this.player, this.ouvre, this.clé, null, this);
         this.physics.add.collider(this.plate, this.player);
+
 
         
         /* overlaps */ 
@@ -94,12 +108,19 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte3, this.texte3, null, this);
         this.physics.add.overlap(this.player, this.porte4, this.texte4, null, this);
         this.physics.add.overlap(this.player, this.porte5, this.texte5, null, this);
+        this.physics.add.overlap(this.player, this.porte6);
 
         this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
+
+        this.porte6 = this.physics.add.staticGroup();
+        this.porte6 = this.add.image(2580,870,'porte').setScale(0.08).setAlpha(1)
+        if (this.cursors.shift.isDown && this.cle == true){
+            this.porte6.setAlpha(0)
+        }
 
         this.valeur = 0
         this.valeur1 = 0
@@ -174,7 +195,7 @@ class Past2 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.scene.start("Zone_2",{ coordX : this.player.x, coordY : this.player.y, score : this.score})
+        this.scene.start("Zone_2",{ coordX : this.player.x, coordY : this.player.y, score : this.score, cle : this.cle})
     }
     switch1()
     {
@@ -193,6 +214,13 @@ class Past2 extends Phaser.Scene {
 
         }
     }
+    clé()
+    {
+        if (this.cursors.shift.isDown){
+            this.ouvre.setAlpha(0)
+            this.cle = true
+        }
+    }
     switch2()
     {
         this.scene.start("Fin",{
@@ -204,7 +232,7 @@ class Past2 extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(210, 790, 'Il était une fois, un royaume lointain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(110, 790, 'Il était une fois, un royaume lointain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
@@ -212,7 +240,7 @@ class Past2 extends Phaser.Scene {
     texte1()
     {
         if (this.valeur1 == 0){
-        this.parfois = this.add.text(630, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(530, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur1 = 1
         }
@@ -220,7 +248,7 @@ class Past2 extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.parfois = this.add.text(1130, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1030, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur2 = 1
         }
@@ -228,7 +256,7 @@ class Past2 extends Phaser.Scene {
     texte3()
     {
         if (this.valeur3 == 0){
-        this.parfois = this.add.text(1730, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1630, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur3 = 1
         }
@@ -236,7 +264,7 @@ class Past2 extends Phaser.Scene {
     texte4()
     {
         if (this.valeur4 == 0){
-        this.parfois = this.add.text(2330, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2230, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur4 = 1
         }
@@ -244,7 +272,7 @@ class Past2 extends Phaser.Scene {
     texte5()
     {
         if (this.valeur5 == 0){
-        this.parfois = this.add.text(2830, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2730, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }

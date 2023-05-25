@@ -7,6 +7,7 @@ class Zone_2 extends Phaser.Scene {
         this.coordX = data.coordX
         this.coordY = data.coordY
         this.score = data.score
+        this.cle = data.cle
     }
     preload() {
 
@@ -32,10 +33,9 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change2.setVisible(false)
 
         this.sadslime = this.physics.add.sprite(2700, 920, 'sadslime').setScale(0.4).setSize(75,75)
-        this.slime = this.physics.add.sprite(650, 920, 'slimeR').setScale(0.4).setSize(75,75)
+        this.slime = this.physics.add.sprite(450, 920, 'slimeR').setScale(0.4).setSize(75,75)
         this.feu = this.physics.add.sprite(1650, 320, 'fire').setScale(0.7).setSize(75,75)
         this.sadslime.anims.play('sadslime', true)
-        //this.slime.vaversladroite=true;
         this.slimeX = this.slime.x
         this.slimeY = this.slime.y     
         this.slimespeed = 75
@@ -52,13 +52,13 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_sol);
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+        this.physics.add.collider(this.player, this.calque_chute1,this.respawn, null, this )
         this.physics.add.collider(this.feu, this.calque_sol);
         this.physics.add.collider(this.slime, this.calque_sol);
         this.physics.add.collider(this.sadslime, this.calque_sol);
 
-        //this.bombs = this.physics.add.group();
-        //this.physics.add.collider(this.bombs, this.calque_sol);
-        //this.physics.add.collider(player, bombs, hitBomb, null, this);
+        this.physics.add.collider(this.feu, this.calque_sol);
+        this.physics.add.collider(this.player, this.feu, this.hitBomb, null, this);
 
 
 
@@ -70,11 +70,10 @@ class Zone_2 extends Phaser.Scene {
 
         
         this.add.image(2780,930,'fleur').setScale(0.5)
-
-        this.feu.anims.play('fire', true);
-
+        this.feu.setBounce(1)
 
 
+        console.log(this.cle)
         
 
 
@@ -84,6 +83,12 @@ class Zone_2 extends Phaser.Scene {
 
     }
     update() {
+        if (this.feu.body.velocity.y < 0){
+            this.feu.anims.play('fire2',true)
+        }
+        else[
+            this.feu.anims.play('fire',true)
+        ]
         if (this.cursors.space.isDown){
             this.changementZone()
         }
@@ -117,10 +122,8 @@ class Zone_2 extends Phaser.Scene {
             this.slime.anims.play('animslime_back', true);
 
         }
-        if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) < 800){
+        if (Phaser.Math.Distance.Between(this.slime.x, this.slime.y, this.slimeX, this.slimeY) < 300){
             this.slime.setVelocityX(this.slimespeed)
-            console.log("lol")
-
         }
 
         else{
@@ -137,10 +140,12 @@ class Zone_2 extends Phaser.Scene {
         
             
     }
-    /*hitBomb(player, bomb){
+    hitBomb(player, feu){
         this.physics.pause();
+        this.cameras.main.fadeOut(3000, 0, 0, 0)
+        this.time.delayedCall(5000,this.respawn,[],this)
         }
-    */
+    
     fadeInAndOut(image, duration, fadeOutDelay) {
         
         const initialOpacity = image.alpha;
@@ -165,7 +170,7 @@ class Zone_2 extends Phaser.Scene {
     }
     changementZone()
     {
-        this.scene.start("Past2",{ coordX : this.player.x, coordY : this.player.y, score : this.score})
+        this.scene.start("Past2",{ coordX : this.player.x, coordY : this.player.y, score : this.score, ouvert : this.ouvert})
     }
     coAudio()
     {
@@ -189,5 +194,9 @@ class Zone_2 extends Phaser.Scene {
             coordY: 900,
         }
         )
+    }
+    respawn()
+    {
+        this.scene.restart()
     }
 };
