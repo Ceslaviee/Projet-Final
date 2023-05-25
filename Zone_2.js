@@ -32,6 +32,10 @@ class Zone_2 extends Phaser.Scene {
         this.calque_change2.setCollisionByProperty({ Dur: true })
         this.calque_change2.setVisible(false)
 
+                
+        this.porte6 = this.physics.add.staticGroup();
+        this.alp = this.porte6.create(2580,950,'gandalf').setScale(0.5).setAlpha(1).setSize(120,120)
+
         this.sadslime = this.physics.add.sprite(2700, 920, 'sadslime').setScale(0.4).setSize(75,75)
         this.slime = this.physics.add.sprite(450, 920, 'slimeR').setScale(0.4).setSize(75,75)
         this.feu = this.physics.add.sprite(1650, 320, 'fire').setScale(0.7).setSize(75,75)
@@ -59,6 +63,8 @@ class Zone_2 extends Phaser.Scene {
 
         this.physics.add.collider(this.feu, this.calque_sol);
         this.physics.add.collider(this.player, this.feu, this.hitBomb, null, this);
+        this.physics.add.collider(this.player, this.porte6);
+
 
 
 
@@ -136,6 +142,10 @@ class Zone_2 extends Phaser.Scene {
             this.slimeX = this.slime.x
             this.slimeY = this.slime.y     
             this.slimespeed = this.slimespeed * (-1)
+        }
+        if (this.cursors.shift.isDown && this.cle == true){
+            this.add.text(2580,780, 'Merci pour tout', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+            this.alp.destroy()
         }
         
             

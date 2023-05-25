@@ -82,6 +82,9 @@ class Past2 extends Phaser.Scene {
         this.porte5.setVisible(false)
 
 
+
+
+
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso2').setScale(0.3);
         this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
@@ -108,19 +111,12 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte3, this.texte3, null, this);
         this.physics.add.overlap(this.player, this.porte4, this.texte4, null, this);
         this.physics.add.overlap(this.player, this.porte5, this.texte5, null, this);
-        this.physics.add.overlap(this.player, this.porte6);
 
         this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
             
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
-
-        this.porte6 = this.physics.add.staticGroup();
-        this.porte6 = this.add.image(2580,870,'porte').setScale(0.08).setAlpha(1)
-        if (this.cursors.shift.isDown && this.cle == true){
-            this.porte6.setAlpha(0)
-        }
 
         this.valeur = 0
         this.valeur1 = 0
@@ -186,6 +182,13 @@ class Past2 extends Phaser.Scene {
             }
         });
     }
+    clé()
+    {
+        if (this.cursors.shift.isDown){
+            this.ouvre.setAlpha(0)
+            this.cle = true
+        }
+    }
     coAudio()
     {
         this.audio = this.sound.add('Dead_Ends',{
@@ -212,13 +215,6 @@ class Past2 extends Phaser.Scene {
             this.plate.setAlpha(1)
             this.plate.setVelocityY(-40)
 
-        }
-    }
-    clé()
-    {
-        if (this.cursors.shift.isDown){
-            this.ouvre.setAlpha(0)
-            this.cle = true
         }
     }
     switch2()
