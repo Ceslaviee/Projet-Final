@@ -37,6 +37,7 @@ class Preload extends Phaser.Scene {
         this.load.image('filante','doc/filante.png')
         this.load.image('clef','doc/clef.png')
         this.load.image('gandalf', 'doc/slime2_back.png')
+        this.load.image('bulle', 'doc/quete.png')
 
         /* preload Textes */
         this.load.image('prélude', "doc/prélude.png");

@@ -2,12 +2,14 @@ class Zone_2 extends Phaser.Scene {
 
     constructor() {
         super("Zone_2");
+        this.quest = false
     }
     init(data){
         this.coordX = data.coordX
         this.coordY = data.coordY
         this.score = data.score
         this.cle = data.cle
+        this.quest = data.quest
     }
     preload() {
 
@@ -35,8 +37,9 @@ class Zone_2 extends Phaser.Scene {
                 
         this.porte6 = this.physics.add.staticGroup();
         this.alp = this.porte6.create(2580,950,'gandalf').setScale(0.5).setAlpha(1).setSize(120,120)
+        this.remerciement = this.add.text(2580,780, 'Merci pour tout', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
 
-        this.sadslime = this.physics.add.sprite(2700, 920, 'sadslime').setScale(0.4).setSize(75,75)
+        this.sadslime = this.physics.add.sprite(3000, 920, 'sadslime').setScale(0.4).setSize(75,75)
         this.slime = this.physics.add.sprite(450, 920, 'slimeR').setScale(0.4).setSize(75,75)
         this.feu = this.physics.add.sprite(1650, 320, 'fire').setScale(0.7).setSize(75,75)
         this.sadslime.anims.play('sadslime', true)
@@ -75,17 +78,22 @@ class Zone_2 extends Phaser.Scene {
         this.fadeInAndOut(this.hor,3000,5000)
 
         
-        this.add.image(2780,930,'fleur').setScale(0.5)
+        this.add.image(3080,930,'fleur').setScale(0.5)
         this.feu.setBounce(1)
+
+        this.bulle = this.add.image(2660, 820, 'bulle').setScale(0.17).setAlpha(1)
 
 
         console.log(this.cle)
-        
+        if (this.cle == true){
+            this.add.image(50, 50,'clef').setScrollFactor(0)
+        }
 
-
-        
-
-        
+        if(this.quest == false){
+            this.bulle.setAlpha(0)
+            this.fadeInAndOut(this.remerciement, 3000, 1000)
+            this.alp.destroy()
+        }      
 
     }
     update() {
@@ -144,11 +152,10 @@ class Zone_2 extends Phaser.Scene {
             this.slimespeed = this.slimespeed * (-1)
         }
         if (this.cursors.shift.isDown && this.cle == true){
-            this.add.text(2580,780, 'Merci pour tout', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+            this.bulle.setAlpha(0)
+            this.quest = true
             this.alp.destroy()
-        }
-        
-            
+        }        
     }
     hitBomb(player, feu){
         this.physics.pause();
@@ -199,9 +206,9 @@ class Zone_2 extends Phaser.Scene {
     }
     switch2()
     {
-        this.scene.start("Fin",{
-            coordX: 3735,
-            coordY: 900,
+        this.scene.start("Introspection",{
+            coordX: 35,
+            coordY: 760,
         }
         )
     }

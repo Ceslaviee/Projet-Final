@@ -175,56 +175,6 @@
    <property name="Dur" type="bool" value="true"/>
   </properties>
  </tile>
- <tile id="404">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="405">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="406">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="407">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="408">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="409">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="410">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="411">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="412">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="413">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
  <tile id="414">
   <properties>
    <property name="Dur" type="bool" value="true"/>
@@ -271,31 +221,6 @@
   </properties>
  </tile>
  <tile id="423">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="454">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="455">
-  <properties>
-   <property name="Dur" type="bool" value="false"/>
-  </properties>
- </tile>
- <tile id="456">
-  <properties>
-   <property name="Dur" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="457">
-  <properties>
-   <property name="Dur" type="bool" value="false"/>
-  </properties>
- </tile>
- <tile id="458">
   <properties>
    <property name="Dur" type="bool" value="true"/>
   </properties>

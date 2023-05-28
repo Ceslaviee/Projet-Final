@@ -1,7 +1,7 @@
-class Maison extends Phaser.Scene {
+class Introspection extends Phaser.Scene {
 
     constructor() {
-        super("Maison");
+        super("Introspection");
     }
     init(data){
         this.coordX = data.coordX
@@ -9,7 +9,6 @@ class Maison extends Phaser.Scene {
     }
     preload() {
 
-        
     }
     create() {
 
@@ -32,11 +31,12 @@ class Maison extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 1840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
-        this.physics.add.collider(this.player, this.calque_sortie,this.switch1, null, this );
+        this.physics.add.collider(this.player, this.calque_sortie,this.switchChoix, null, this );
+        
+
         
 
     }
-        
     update() {
         if (this.cursors.left.isDown){ 
             this.player.setVelocityX(-160); 
@@ -61,15 +61,10 @@ class Maison extends Phaser.Scene {
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
         }
-
-
     }
-    coAudio()
+    switchChoix()
     {
-        this.audio = this.sound.add('Dead_Ends',{
-            volume : 0.1,
-        })
-            this.audio.play()
+        this.scene.start("Fin")
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
         
@@ -93,13 +88,4 @@ class Maison extends Phaser.Scene {
             }
         });
     }
-    switch1() 
-    {
-        this.scene.start('Zone_1',{
-            coordX: 50,
-            coordY: 840    
-        }
-        );
-    }
-
-}
+};

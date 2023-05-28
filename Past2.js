@@ -8,6 +8,7 @@ class Past2 extends Phaser.Scene {
         this.coordX = data.coordX
         this.coordY = data.coordY
         this.score = data.score
+        this.quest = data.quest
     }
     preload() {
 
@@ -45,14 +46,15 @@ class Past2 extends Phaser.Scene {
             this.ouvre.create(1750,920,'clef').setScale(0.5).setAlpha(1)
         }
 
+
         this.incidence = this.physics.add.staticGroup();
         this.plate = this.physics.add.group({allowGravity : false});
         this.incidence.create(260,920,'plante').setScale(2).setAlpha(1)
         this.plate.create(260,960,'plateforme').setScale(1).setAlpha(0).setPushable(false).setSize(100,15)
         
 
-        this.slime3 =  this.physics.add.sprite(2780, 920, 'slime').setScale(0.4).setSize(75,75)
-        this.slime2 =  this.physics.add.sprite(2700, 920, 'slime').setScale(0.4).setSize(75,75)
+        this.slime3 =  this.physics.add.sprite(3080, 920, 'slime').setScale(0.4).setSize(75,75)
+        this.slime2 =  this.physics.add.sprite(3000, 920, 'slime').setScale(0.4).setSize(75,75)
         this.slime3.anims.play('slime_back', true);
         this.slime2.anims.play('slime', true);
 
@@ -95,6 +97,7 @@ class Past2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_sol); 
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
+        this.physics.add.collider(this.player, this.calque_chute1,this.restar, null, this )
         this.physics.add.collider(this.slime2, this.calque_sol);
         this.physics.add.collider(this.slime3, this.calque_sol);
         this.physics.add.overlap(this.player, this.incidence, this.interaction, null, this);
@@ -187,6 +190,7 @@ class Past2 extends Phaser.Scene {
         if (this.cursors.shift.isDown){
             this.ouvre.setAlpha(0)
             this.cle = true
+            this.add.text(1750, 590, 'clef', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         }
     }
     coAudio()
@@ -219,9 +223,9 @@ class Past2 extends Phaser.Scene {
     }
     switch2()
     {
-        this.scene.start("Fin",{
-            spawnX: 3735,
-            spawnY: 900,
+        this.scene.start("Introspection",{
+            coordX: 35,
+            coordY: 760,
         }
         )
     }
@@ -272,5 +276,9 @@ class Past2 extends Phaser.Scene {
         this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }
+    }
+    restar()
+    {
+        this.scene.restart()
     }
 };
