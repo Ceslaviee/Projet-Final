@@ -21,7 +21,6 @@ class Introspection extends Phaser.Scene {
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
         this.add.image(1800, 480, 'noir').setScale(1.2);
-        this.mémor = this.add.image(800, 670, 'snow').setScale(0.3)
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
