@@ -10,9 +10,7 @@ class Preload extends Phaser.Scene {
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
         this.load.tilemapTiledJSON("Guerr", "Json/Past2.json");
         this.load.tilemapTiledJSON("debut", "Json/Debut.json");
-        this.load.tilemapTiledJSON('intros',"Json/Introspection.json")
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
-        this.load.image("Phaser_tuiles", "doc/tileset collectable.png");
         
 
         /* preload Sons */
