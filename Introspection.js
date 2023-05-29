@@ -21,6 +21,7 @@ class Introspection extends Phaser.Scene {
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
         this.add.image(1800, 480, 'noir').setScale(1.2);
+        this.mémor = this.add.image(800, 670, 'snow').setScale(0.3)
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -28,7 +29,7 @@ class Introspection extends Phaser.Scene {
         this.player.setCollideWorldBounds(true);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.physics.world.setBounds(0, 0, 3840, 960);
-        this.cameras.main.setBounds(0, 0, 1840, 960);
+        this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
         this.physics.add.collider(this.player, this.calque_sortie,this.switchChoix, null, this );

@@ -14,9 +14,9 @@ class Main extends Phaser.Scene {
     update() {}
     launchGame()
     {
-        this.scene.start('Past2',{
+        this.scene.start('Introspection',{
             coordX: 80,
-            coordY: 840,    
+            coordY: 760,    
             score: 0
         }
         )
