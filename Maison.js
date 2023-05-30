@@ -21,6 +21,14 @@ class Maison extends Phaser.Scene {
         this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
+        this.encel = this.physics.add.staticGroup();
+        this.encel.create(300,920, 'porte').setScale(0.1).setSize(100,100);
+        this.encel.setVisible(false)
+
+        this.encel1 = this.physics.add.staticGroup();
+        this.encel1.create(1610,920, 'porte').setScale(0.1).setSize(100,100);
+        this.encel1.setVisible(false)
+
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
         this.player.setBounce(0.2);
@@ -31,6 +39,12 @@ class Maison extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
         this.physics.add.collider(this.player, this.calque_sortie,this.switch1, null, this );
+        this.physics.add.overlap(this.player, this.encel, this.texte, null, this);
+        this.physics.add.overlap(this.player, this.encel1, this.texte1, null, this);
+
+
+        this.valeur = 0
+        this.valeur1 = 0
         
 
     }
@@ -60,7 +74,22 @@ class Maison extends Phaser.Scene {
             this.player.setVelocityY(-330);
         }
 
-
+    }
+    texte()
+    {
+        if (this.valeur == 0){
+        this.soeur = this.add.text(290, 730, 'Encel ?', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.soeur,3000,2000)
+        this.valeur = 1
+        }
+    }
+    texte1()
+    {
+        if (this.valeur1 == 0){
+        this.par = this.add.text(1410, 730, 'Encel je suis rentrer et j ai une surprise.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.par,3000,2000)
+        this.valeur1 = 1
+        }
     }
     coAudio()
     {
