@@ -16,7 +16,7 @@ class Main extends Phaser.Scene {
     {
         this.scene.start('Introspection',{
             coordX: 80,
-            coordY: 760,    
+            coordY: 780,    
             score: 0
         }
         )

@@ -3,6 +3,7 @@ class Preload extends Phaser.Scene {
         super("Preload");
     }
     preload() {
+
         /* preload Tileset et Maps */
         this.load.tilemapTiledJSON("maison", "Json/Maison.json");
         this.load.tilemapTiledJSON("jar", "Json/Past_1.json");
@@ -10,11 +11,14 @@ class Preload extends Phaser.Scene {
         this.load.tilemapTiledJSON("Guerre", "Json/Zone_2.json");
         this.load.tilemapTiledJSON("Guerr", "Json/Past2.json");
         this.load.tilemapTiledJSON("debut", "Json/Debut.json");
+        this.load.tilemapTiledJSON("filles","Json/Filles.json");
         this.load.image("Phaser_tuilesdejeu", "doc/tileset collectable.png");
+
         
 
         /* preload Sons */
         this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
+
 
         /* preload assets */
         this.load.image("bouton", "doc/étoile.png");
@@ -39,6 +43,8 @@ class Preload extends Phaser.Scene {
         this.load.image('gandalf', 'doc/slime2_back.png')
         this.load.image('bulle', 'doc/quete.png')
         this.load.image('snow','doc/snowball.png')
+
+
         /* preload Textes */
         this.load.image('prélude', "doc/prélude.png");
         this.load.image("coment","doc/Commencement.png");
@@ -62,7 +68,6 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet("sadslime", "doc/sadslime.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet("slimeR", "doc/slime2.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet("slimeRed", "doc/slime2_back.png",{frameWidth : 262, frameHeight: 192});
-        this.load.spritesheet('cligne', 'doc/blinkD.png',{frameWidth : 161, frameHeight: 217});
         this.load.spritesheet('stop', 'doc/idle.png',{frameWidth : 161, frameHeight: 217});
         this.load.spritesheet('marche', 'doc/animation.png',{frameWidth : 168, frameHeight: 230});
         this.load.spritesheet('fire','doc/fire.png',{frameWidth : 210, frameHeight: 158})
@@ -84,15 +89,6 @@ class Preload extends Phaser.Scene {
             key: 'fire2',
             frames: this.anims.generateFrameNumbers('fire2', {start:0,end:5}),
             frameRate: 4,
-            repeat: -1
-        })
-
-
-
-        this.anims.create({
-            key: 'anim1',
-            frames: this.anims.generateFrameNumbers('cligne', {start:0,end:4}),
-            frameRate: 1,
             repeat: -1
         })
 

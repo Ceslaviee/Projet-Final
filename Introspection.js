@@ -3,7 +3,7 @@ class Introspection extends Phaser.Scene {
     constructor() {
         super("Introspection");
     }
-    init(data){
+    init(data) {
         this.coordX = data.coordX
         this.coordY = data.coordY
     }
@@ -13,14 +13,16 @@ class Introspection extends Phaser.Scene {
     create() {
 
         this.carteDuNiveau = this.add.tilemap("maison");
-        this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
-        this.calque_Murs = this.carteDuNiveau.createLayer("Murs",this.tileset);
+        this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset", "Phaser_tuilesdejeu");
+        this.calque_Murs = this.carteDuNiveau.createLayer("Murs", this.tileset);
         this.calque_Murs.setCollisionByProperty({ Dur: true })
 
-        this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
+        this.calque_sortie = this.carteDuNiveau.createLayer("sortie", this.tileset);
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
         this.add.image(1800, 480, 'noir').setScale(1.2);
+
+        this.levite = this.physics.add.sprite(800, 700, "snow").setScale(0.4).body.setAllowGravity(false)
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -31,58 +33,69 @@ class Introspection extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 3840, 960);
         this.cameras.main.startFollow(this.player);
         this.physics.add.collider(this.player, this.calque_Murs);
-        this.physics.add.collider(this.player, this.calque_sortie,this.switchChoix, null, this );
-        
+        this.physics.add.collider(this.player, this.calque_sortie, this.switchChoix, null, this);
 
-        
+        this.down = true
+
 
     }
     update() {
-        if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-160); 
+        if (this.cursors.left.isDown) {
+            this.player.setVelocityX(-160);
             this.gauche = 1
-            this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
+            this.player.anims.play('gauche', true).setScale(0.3).setSize(150, 150);
         }
-        else if (this.cursors.right.isDown){
+        else if (this.cursors.right.isDown) {
             this.player.setVelocityX(160);
             this.gauche = 0
-            this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
+            this.player.anims.play('droite', true).setScale(0.3).setSize(150, 150);
         }
-        else{ // sinon
+        else { // sinon
             this.player.setVelocityX(0);
-            if (this.gauche == 0){
+            if (this.gauche == 0) {
                 this.player.anims.play("idle_droite")
             }
-            else{
+            else {
                 this.player.anims.play("idle_gauche")
             }
 
         }
-        if (this.cursors.up.isDown && this.player.body.blocked.down){
-            this.player.setVelocityY(-330);
+        
+        if (this.down) {
+            this.levite.acceleration.y = -100
         }
+        else {
+            this.levite.acceleration.y = 100
+        }
+        if (this.down &&  this.levite.velocity.y < -60) {
+            this.down = false
+        }
+        else if (!this.down &&  this.levite.velocity.y > 60) {
+            this.down = true
+        }
+        
+
     }
-    switchChoix()
-    {
+    switchChoix() {
         this.scene.start("Fin")
     }
     fadeInAndOut(image, duration, fadeOutDelay) {
-        
+
         const initialOpacity = image.alpha;
-    
-        
+
+
         this.tweens.add({
             targets: image,
             alpha: 1,
-            duration: duration / 2, 
+            duration: duration / 2,
             onComplete: () => {
-                
+
                 this.time.delayedCall(fadeOutDelay, () => {
-                    
+
                     this.tweens.add({
                         targets: image,
                         alpha: initialOpacity,
-                        duration: duration / 2, 
+                        duration: duration / 2,
                     });
                 });
             }

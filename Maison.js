@@ -12,16 +12,14 @@ class Maison extends Phaser.Scene {
         
     }
     create() {
-
-        this.carteDuNiveau = this.add.tilemap("maison");
+ 
+        this.carteDuNiveau = this.add.tilemap("filles");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_Murs = this.carteDuNiveau.createLayer("Murs",this.tileset);
         this.calque_Murs.setCollisionByProperty({ Dur: true })
 
         this.calque_sortie = this.carteDuNiveau.createLayer("sortie",this.tileset);
         this.calque_sortie.setCollisionByProperty({ Dur: true })
-
-        this.add.image(1800, 480, 'noir').setScale(1.2);
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);

@@ -12,15 +12,14 @@ class Debut extends Phaser.Scene {
     }
     create() {
 
-        this.add.image(1800, 480, 'fond_1').setScale(1.05).setScrollFactor(0);
+        this.physics.pause()
+        this.time.delayedCall(3000, this.defreeze,[],this)
+        
+        this.add.image(1800, 480, 'fond_1').setScale(1.05).setScrollFactor(0.4);
         this.carteDuNiveau = this.add.tilemap("debut");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
         this.calque_herbe = this.carteDuNiveau.createLayer("herbe",this.tileset);
         this.calque_herbe.setCollisionByProperty({ Dur: true })
-        
-        this.calque_redem = this.carteDuNiveau.createLayer("redem",this.tileset);
-        this.calque_redem.setCollisionByProperty({ Dur: true })
-        this.calque_redem.setVisible(false)
 
         this.transition = this.add.image(620, 480, 'noir').setAlpha(0)
 
@@ -66,7 +65,7 @@ class Debut extends Phaser.Scene {
         this.gauche = 0
         this.points = 1
 
-        this.dia = this.add.text(50, 790, 'Il se fait tard je ferais mieux de rentrer.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
+        this.dia = this.add.text(5, 790, 'Je devrais ramasser des fleurs pour Encel', { font: "30px SchwarzKopf New", fill: "red", align:"center" }).setAlpha(0);        
         this.fadeInAndOut(this.dia,3000,2000)
 
         this.valeur = 0
