@@ -12,6 +12,7 @@ class Maison extends Phaser.Scene {
         
     }
     create() {
+        this.add.image(490, 690, 'fond_1')
  
         this.carteDuNiveau = this.add.tilemap("filles");
         this.tileset = this.carteDuNiveau.addTilesetImage("petit tileset","Phaser_tuilesdejeu");
@@ -22,12 +23,15 @@ class Maison extends Phaser.Scene {
         this.calque_sortie.setCollisionByProperty({ Dur: true })
 
         this.encel = this.physics.add.staticGroup();
-        this.encel.create(300,920, 'porte').setScale(0.1).setSize(100,100);
+        this.encel.create(450,920, 'porte').setScale(0.1).setSize(100,100);
         this.encel.setVisible(false)
 
         this.encel1 = this.physics.add.staticGroup();
         this.encel1.create(1610,920, 'porte').setScale(0.1).setSize(100,100);
         this.encel1.setVisible(false)
+
+        this.add.image(50, 750, 'coussin').setScale(0.1)
+        this.add.image(1050, 750, 'coussin2').setScale(0.1)
 
         //Config
         this.player = this.physics.add.sprite(this.coordX, this.coordY, 'perso').setScale(0.3);
@@ -78,7 +82,7 @@ class Maison extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.soeur = this.add.text(290, 730, 'Encel ?', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.soeur = this.add.text(490, 730, 'Encel ?', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.soeur,3000,2000)
         this.valeur = 1
         }

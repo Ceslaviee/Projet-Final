@@ -86,12 +86,12 @@ class Zone_1 extends Phaser.Scene {
             this.changementZone()
         }
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-260); 
+            this.player.setVelocityX(-190); 
             this.gauche = 1
             this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260);
+            this.player.setVelocityX(190);
             this.gauche = 0
             this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
@@ -121,7 +121,6 @@ class Zone_1 extends Phaser.Scene {
     }
     entree()
     {
-        console.log("dlf")
         if (this.cursors.shift.isDown){
             console.log("log")
             this.scene.start("Maison",{

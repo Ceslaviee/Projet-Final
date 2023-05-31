@@ -37,7 +37,6 @@ class Past1 extends Phaser.Scene {
         });
 
         this.add.image(130,760, 'mais2').setScale(0.17);
-        this.add.image(3600 ,760, 'mais3').setScale(0.17);
         this.porte = this.physics.add.staticGroup();
         this.porte.create(125,850, 'porte').setScale(0.2);
 
@@ -79,12 +78,12 @@ class Past1 extends Phaser.Scene {
             this.changementZone()
         }
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-260); 
+            this.player.setVelocityX(-190); 
             this.gauche = 1
             this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260);
+            this.player.setVelocityX(190);
             this.gauche = 0
             this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
@@ -125,9 +124,7 @@ class Past1 extends Phaser.Scene {
     }
     entree()
     {
-        console.log("dlf")
         if (this.cursors.shift.isDown){
-            console.log("log")
             this.scene.start("Maison",{
 
                 coordX: 1816,

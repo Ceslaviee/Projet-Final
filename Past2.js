@@ -121,6 +121,8 @@ class Past2 extends Phaser.Scene {
         this.hor = this.add.image(650, 120, 'hor').setScale(0.3).setScrollFactor(0).setAlpha(0);
         this.fadeInAndOut(this.hor,3000,5000)
 
+        this.gameover = this.add.image(650, 450, 'GO').setAlpha(0).setScrollFactor(0).setScale(1.05)
+
         this.valeur = 0
         this.valeur1 = 0
         this.valeur2 = 0
@@ -279,6 +281,14 @@ class Past2 extends Phaser.Scene {
     }
     restar()
     {
+        this.physics.pause()
+        this.gameover.setAlpha(1)
+        this.fadeInAndOut(this.gameover,2000,1000)
+        this.time.delayedCall(3000,this.respawn,[],this)
+    }
+    respawn()
+    {
         this.scene.restart()
+
     }
 };

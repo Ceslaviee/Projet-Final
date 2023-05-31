@@ -43,6 +43,10 @@ class Preload extends Phaser.Scene {
         this.load.image('gandalf', 'doc/slime2_back.png')
         this.load.image('bulle', 'doc/quete.png')
         this.load.image('snow','doc/snowball.png')
+        this.load.image('cred','doc/Credits.png')
+        this.load.image('coussin','doc/coussin.png')
+        this.load.image('coussin2','doc/rouge-coussin.png')
+        this.load.image('GO','doc/souvenir.png')
 
 
         /* preload Textes */

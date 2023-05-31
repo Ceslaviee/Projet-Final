@@ -170,9 +170,10 @@ class Debut extends Phaser.Scene {
     }
     switch1() 
     {
-        this.scene.start('Zone_1',{
-            coordX: 50,
-            coordY: 840,    
+        this.scene.start('Maison',{
+            
+            coordX: 1816,
+            coordY: 809,    
             score: 0
         }
         );}
