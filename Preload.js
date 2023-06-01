@@ -47,10 +47,24 @@ class Preload extends Phaser.Scene {
         this.load.image('coussin','doc/coussin.png')
         this.load.image('coussin2','doc/rouge-coussin.png')
         this.load.image('GO','doc/souvenir.png')
+        this.load.image('chapitres','doc/Chapitres.png')
+        this.load.image('prélude','doc/Prélode.png')
+        this.load.image('Aphélion','doc/Aphélion.png')
+        this.load.image('Périhélie','doc/Périhélie.png')
+        this.load.image('horizon','doc/hoziron.png')
+        this.load.image('fondu','doc/bleu_fonc.png')
+        
 
+        /* preload planetes */
+        this.load.image('blanc','planetes/blanc')
+        this.load.image('bleu','planetes/bleu')
+        this.load.image('pixel','planetes/pixel')
+        this.load.image('rose','planetes/rose')
+        this.load.image('rouge','planetes/rouge')
+        this.load.image('vert','planetes/vert')
+        this.load.image('violet','planetes/violet')
 
         /* preload Textes */
-        this.load.image('prélude', "doc/prélude.png");
         this.load.image("coment","doc/Commencement.png");
 
 
@@ -81,6 +95,8 @@ class Preload extends Phaser.Scene {
         
     }
     create() {  
+
+        console.log("Gloire a Yoshinori Kitase")
 
         this.anims.create({
             key: 'fire',

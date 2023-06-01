@@ -39,7 +39,7 @@ class Debut extends Phaser.Scene {
         this.incidence5.create(1919,349,'plante2').setScale(2).setAlpha(1)
         this.incidence6.create(1230,512,'plante2').setScale(2).setAlpha(1)
 
-        this.add.image(1250, 50, 'plante2').setScale(4).setScrollFactor(0)
+        this.add.image(750, 50, 'plante2').setScale(4).setScrollFactor(0)
 
 
         //Config
@@ -58,14 +58,14 @@ class Debut extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.incidence5, this.point, null, this);
         this.physics.add.overlap(this.player, this.incidence6, this.point, null, this);
 
-        this.TexteScore = this.add.text(1140, 35, this.points, {
+        this.TexteScore = this.add.text(640, 35, this.points, {
             fontSize : '32px', fill : "#FFFFFF"
         }).setScrollFactor(0)
 
         this.gauche = 0
         this.points = 1
 
-        this.dia = this.add.text(5, 790, 'Je devrais ramasser des fleurs pour Encel', { font: "30px SchwarzKopf New", fill: "red", align:"center" }).setAlpha(0);        
+        this.dia = this.add.text(5, 790, 'Je devrais ramasser des fleurs pour Encel', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
         this.fadeInAndOut(this.dia,3000,2000)
 
         this.valeur = 0
@@ -77,12 +77,12 @@ class Debut extends Phaser.Scene {
         
     update() {
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-260); 
+            this.player.setVelocityX(-160); 
             this.gauche = 1
             this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260);
+            this.player.setVelocityX(160);
             this.gauche = 0
             this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }

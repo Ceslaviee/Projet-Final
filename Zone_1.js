@@ -69,9 +69,6 @@ class Zone_1 extends Phaser.Scene {
             fontSize : '32px', fill : "#FFFFFF"
         }).setScrollFactor(0)
 
-        this.pre = this.add.image(650, 120, 'prélude').setScale(0.3).setScrollFactor(0).setAlpha(0);
-        this.fadeInAndOut(this.pre,3000,5000)
-
 
 
         this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);

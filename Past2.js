@@ -48,9 +48,9 @@ class Past2 extends Phaser.Scene {
 
 
         this.incidence = this.physics.add.staticGroup();
-        this.plate = this.physics.add.group({allowGravity : false});
+        this.plate = this.physics.add.sprite(260,960,'plateforme').setScale(1).setAlpha(0).setPushable(false).setSize(100,15);
+        this.plate.body.setAllowGravity(false)
         this.incidence.create(260,920,'plante').setScale(2).setAlpha(1)
-        this.plate.create(260,960,'plateforme').setScale(1).setAlpha(0).setPushable(false).setSize(100,15)
         
 
         this.slime3 =  this.physics.add.sprite(3080, 920, 'slime').setScale(0.4).setSize(75,75)
@@ -130,9 +130,6 @@ class Past2 extends Phaser.Scene {
         this.valeur4 = 0
         this.valeur5 = 0
 
-        
-
-        
 
     }
     update() {
@@ -140,12 +137,12 @@ class Past2 extends Phaser.Scene {
             this.changementZone()
         }
         if (this.cursors.left.isDown){ 
-            this.player.setVelocityX(-260); 
+            this.player.setVelocityX(-160); 
             this.gauche = 1
             this.player.anims.play('gauche',true).setScale(0.3).setSize(150,150);
         }
         else if (this.cursors.right.isDown){
-            this.player.setVelocityX(260);
+            this.player.setVelocityX(160);
             this.gauche = 0
             this.player.anims.play('droite',true).setScale(0.3).setSize(150,150);
         }
@@ -161,6 +158,9 @@ class Past2 extends Phaser.Scene {
         }
         if (this.cursors.up.isDown && this.player.body.blocked.down){
             this.player.setVelocityY(-330);
+        }
+        if(this.plate.y <= 730){
+            this.plate.body.setVelocity(0)
         }
 
 
@@ -288,7 +288,6 @@ class Past2 extends Phaser.Scene {
     }
     respawn()
     {
-        this.scene.restart()
-
+        this.scene.restart({coordX: 97,coordY: 900,})
     }
 };
