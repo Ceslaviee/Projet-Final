@@ -111,8 +111,8 @@ class Zone_1 extends Phaser.Scene {
     
     coAudio()
     {
-        this.audio = this.sound.add('Dead_Ends',{
-            volume : 0.1,
+        this.audio = this.sound.add('Sans_toi',{
+            volume : 0.5,
         })
             this.audio.play()
     }

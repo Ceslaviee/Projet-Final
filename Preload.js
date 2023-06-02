@@ -17,7 +17,7 @@ class Preload extends Phaser.Scene {
         
 
         /* preload Sons */
-        this.load.audio('Dead_Ends', "son/Dead_Ends.mp3");
+        this.load.audio('Sans_toi', "son/Sans_toi.mp3");
 
 
         /* preload assets */
@@ -56,13 +56,13 @@ class Preload extends Phaser.Scene {
         
 
         /* preload planetes */
-        this.load.image('blanc','planetes/blanc')
-        this.load.image('bleu','planetes/bleu')
-        this.load.image('pixel','planetes/pixel')
-        this.load.image('rose','planetes/rose')
-        this.load.image('rouge','planetes/rouge')
-        this.load.image('vert','planetes/vert')
-        this.load.image('violet','planetes/violet')
+        this.load.image('blanc','planetes/blanc.png')
+        this.load.image('bleu','planetes/bleu.png')
+        this.load.image('pixel','planetes/pixel.png')
+        this.load.image('rose','planetes/rose.png')
+        this.load.image('rouge','planetes/rouge.png')
+        this.load.image('vert','planetes/vert.png')
+        this.load.image('violet','planetes/violet.png')
 
         /* preload Textes */
         this.load.image("coment","doc/Commencement.png");
