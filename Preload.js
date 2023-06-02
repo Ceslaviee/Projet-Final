@@ -53,6 +53,7 @@ class Preload extends Phaser.Scene {
         this.load.image('Périhélie','doc/Périhélie.png')
         this.load.image('horizon','doc/hoziron.png')
         this.load.image('fondu','doc/bleu_fonc.png')
+        this.load.image('obstacle','doc/arbre.png')
         
 
         /* preload planetes */

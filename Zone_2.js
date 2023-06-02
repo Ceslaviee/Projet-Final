@@ -95,6 +95,7 @@ class Zone_2 extends Phaser.Scene {
             this.alp.destroy()
         }      
 
+        this.lux = 0
     }
     update() {
         if (this.feu.body.velocity.y < 0){

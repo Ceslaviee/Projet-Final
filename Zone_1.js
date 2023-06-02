@@ -74,6 +74,8 @@ class Zone_1 extends Phaser.Scene {
         this.gameButton = this.add.image(1265,845,"bout").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
 
+        this.lux = 0
+
         
 
     }
@@ -109,13 +111,18 @@ class Zone_1 extends Phaser.Scene {
 
     }
     
-    coAudio()
-    {
-        this.audio = this.sound.add('Sans_toi',{
-            volume : 0.5,
-        })
-            this.audio.play()
+    coAudio(){
+    if (this.lux == 0)
+    {this.audio = this.sound.add('Sans_toi',{
+        volume : 0.5,
+    })
+        this.lux += 1;
+        this.audio.play()}
+    else{
+        this.audio.stop()
+        this.lux = 0
     }
+}
     entree()
     {
         if (this.cursors.shift.isDown){

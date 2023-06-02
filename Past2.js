@@ -83,6 +83,20 @@ class Past2 extends Phaser.Scene {
         this.porte5.create(2830,920, 'porte').setScale(0.2);
         this.porte5.setVisible(false)
 
+        this.obstrue = this.physics.add.staticGroup();
+        this.obstrue.create(2500, 820,'obstacle').setSize(90,350);
+
+        this.add.image(2550, 820,'obstacle')
+        
+        this.add.image(2590, 820,'obstacle')
+
+        this.add.image(2450, 820,'obstacle')
+
+        this.add.image(2480, 820,'obstacle')
+
+        this.add.sprite(2500,890,'slime').setScale(0.6)
+
+
 
 
 
@@ -103,6 +117,7 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.incidence, this.interaction, null, this);
         this.physics.add.overlap(this.player, this.ouvre, this.clé, null, this);
         this.physics.add.collider(this.plate, this.player);
+        this.physics.add.collider(this.obstrue, this.player);
 
 
         
@@ -130,7 +145,7 @@ class Past2 extends Phaser.Scene {
         this.valeur4 = 0
         this.valeur5 = 0
 
-
+        this.lux = 0
     }
     update() {
         if (this.cursors.space.isDown){

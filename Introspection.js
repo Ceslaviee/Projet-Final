@@ -36,6 +36,7 @@ class Introspection extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_sortie, this.switchChoix, null, this);
 
         this.down = true
+        this.audio.stop()
 
 
     }

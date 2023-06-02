@@ -72,6 +72,7 @@ class Debut extends Phaser.Scene {
         this.valeur1 = 0
 
         this.test = 0
+        this.lux = 0
 
     }
         
@@ -126,10 +127,16 @@ class Debut extends Phaser.Scene {
     }
     coAudio()
     {
-        this.audio = this.sound.add('Sans_toi',{
+    if (this.lux == 0)
+        {this.audio = this.sound.add('Sans_toi',{
             volume : 0.5,
         })
-            this.audio.play()
+            this.lux += 1;
+            this.audio.play()}
+    else{
+            this.audio.stop()
+            this.lux = 0
+        }
     }
     tuto()
     {
