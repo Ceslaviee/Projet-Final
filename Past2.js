@@ -88,6 +88,13 @@ class Past2 extends Phaser.Scene {
 
         this.add.sprite(2500,890,'slime').setScale(0.6)
 
+        this.feu = this.physics.add.sprite(1785, 220, 'fire').setScale(0.7).setSize(65,65)
+        this.feu1 = this.physics.add.sprite(1885, 320, 'fire').setScale(0.7).setSize(65,65)
+        this.feu2 = this.physics.add.sprite(1985, 420, 'fire').setScale(0.7).setSize(65,65)
+
+        this.collier = this.physics.add.staticGroup();
+        this.collier.create(2290,530,'collier').setScale(0.2)
+
 
 
 
@@ -110,7 +117,21 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.ouvre, this.clé, null, this);
         this.physics.add.collider(this.plate, this.player);
         this.physics.add.collider(this.obstrue, this.player);
+        this.physics.add.collider(this.feu, this.calque_sol);
+        this.physics.add.collider(this.feu1, this.calque_sol);
+        this.physics.add.collider(this.feu2, this.calque_sol);
 
+        this.physics.add.collider(this.feu, this.calque_sol);
+        this.physics.add.collider(this.player, this.feu, this.hitBomb, null, this);
+        this.physics.add.collider(this.feu1, this.calque_sol);
+        this.physics.add.collider(this.player, this.feu1, this.hitBomb, null, this);
+        this.physics.add.collider(this.feu2, this.calque_sol);
+        this.physics.add.collider(this.player, this.feu2, this.hitBomb, null, this);
+        
+
+        this.feu.setBounce(1)
+        this.feu1.setBounce(1)
+        this.feu2.setBounce(1)
 
         
         /* overlaps */ 
@@ -121,6 +142,7 @@ class Past2 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.porte3, this.texte3, null, this);
         this.physics.add.overlap(this.player, this.porte4, this.texte4, null, this);
         this.physics.add.overlap(this.player, this.porte5, this.texte5, null, this);
+        this.physics.add.overlap(this.player, this.collier, this.histoire, null, this);
 
         this.gameButton = this.add.image(1265,50,"faille3").setScrollFactor(0).setInteractive().setScale(0.04);
         this.gameButton.on("pointerdown", this.coAudio, this);
@@ -138,8 +160,28 @@ class Past2 extends Phaser.Scene {
         this.valeur5 = 0
 
         this.lux = 0
+
+
     }
     update() {
+        if (this.feu.body.velocity.y < 0){
+            this.feu.anims.play('fire2',true)
+        }
+        else[
+            this.feu.anims.play('fire',true)
+        ]
+        if (this.feu1.body.velocity.y < 0){
+            this.feu1.anims.play('fire2',true)
+        }
+        else[
+            this.feu1.anims.play('fire',true)
+        ]
+        if (this.feu2.body.velocity.y < 0){
+            this.feu2.anims.play('fire2',true)
+        }
+        else[
+            this.feu2.anims.play('fire',true)
+        ]
         if (this.cursors.space.isDown){
             this.changementZone()
         }
@@ -194,6 +236,17 @@ class Past2 extends Phaser.Scene {
             }
         });
     }
+    histoire(){
+        if(this.cursors.shift.isDown){
+            this.collier.setAlpha(0)
+        }
+
+    }
+    hitBomb(player, feu){
+        this.physics.pause();
+        this.cameras.main.fadeOut(3000, 0, 0, 0)
+        this.time.delayedCall(5000,this.respawn,[],this)
+        }
     clé()
     {
         if (this.cursors.shift.isDown){
@@ -205,7 +258,7 @@ class Past2 extends Phaser.Scene {
     coAudio()
     {
         this.audio = this.sound.add('Sans_toi',{
-            volume : 0.5,
+            volume : 0.1,
         })
             this.audio.play()
     }

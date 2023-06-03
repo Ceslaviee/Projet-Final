@@ -41,7 +41,6 @@ class Zone_2 extends Phaser.Scene {
 
         this.sadslime = this.physics.add.sprite(3000, 920, 'sadslime').setScale(0.4).setSize(75,75)
         this.slime = this.physics.add.sprite(450, 920, 'slimeR').setScale(0.4).setSize(75,75)
-        this.feu = this.physics.add.sprite(1650, 320, 'fire').setScale(0.7).setSize(75,75)
         this.sadslime.anims.play('sadslime', true)
         this.slimeX = this.slime.x
         this.slimeY = this.slime.y     
@@ -60,12 +59,8 @@ class Zone_2 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_change1,this.switch1, null, this )
         this.physics.add.collider(this.player, this.calque_change2,this.switch2, null, this )
         this.physics.add.collider(this.player, this.calque_chute1,this.respawn, null, this )
-        this.physics.add.collider(this.feu, this.calque_sol);
         this.physics.add.collider(this.slime, this.calque_sol);
         this.physics.add.collider(this.sadslime, this.calque_sol);
-
-        this.physics.add.collider(this.feu, this.calque_sol);
-        this.physics.add.collider(this.player, this.feu, this.hitBomb, null, this);
         this.physics.add.collider(this.player, this.porte6);
 
 
@@ -79,7 +74,6 @@ class Zone_2 extends Phaser.Scene {
 
         
         this.add.image(3080,930,'fleur').setScale(0.5)
-        this.feu.setBounce(1)
 
         this.bulle = this.add.image(2660, 820, 'bulle').setScale(0.17).setAlpha(1)
 
@@ -98,12 +92,6 @@ class Zone_2 extends Phaser.Scene {
         this.lux = 0
     }
     update() {
-        if (this.feu.body.velocity.y < 0){
-            this.feu.anims.play('fire2',true)
-        }
-        else[
-            this.feu.anims.play('fire',true)
-        ]
         if (this.cursors.space.isDown){
             this.changementZone()
         }
@@ -158,11 +146,6 @@ class Zone_2 extends Phaser.Scene {
             this.alp.destroy()
         }        
     }
-    hitBomb(player, feu){
-        this.physics.pause();
-        this.cameras.main.fadeOut(3000, 0, 0, 0)
-        this.time.delayedCall(5000,this.respawn,[],this)
-        }
     
     fadeInAndOut(image, duration, fadeOutDelay) {
         
@@ -193,7 +176,7 @@ class Zone_2 extends Phaser.Scene {
     coAudio()
     {
         this.audio = this.sound.add('Dead_Ends',{
-            volume : 0.3,
+            volume : 0.1,
         })
             this.audio.play()
     }

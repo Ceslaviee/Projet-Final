@@ -21,8 +21,7 @@ class Zone_1 extends Phaser.Scene {
         this.calque_tentative.setCollisionByProperty({ Dur: true })
 
         //Audio 
-        //this.add.text(100, 800, 'Appuie sur Espace', { font: "25px SchwarzKopf", fill: "white", align:"center" });
-
+        
 
 
         //Calque
@@ -76,6 +75,9 @@ class Zone_1 extends Phaser.Scene {
 
         this.lux = 0
 
+        this.add.text(300, 800, 'Appuie sur Espace', { font: "25px SchwarzKopf", fill: "white", align:"center" });
+
+
         
 
     }
@@ -114,7 +116,7 @@ class Zone_1 extends Phaser.Scene {
     coAudio(){
     if (this.lux == 0)
     {this.audio = this.sound.add('Sans_toi',{
-        volume : 0.5,
+        volume : 0.1,
     })
         this.lux += 1;
         this.audio.play()}

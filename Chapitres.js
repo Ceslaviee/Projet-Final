@@ -4,6 +4,7 @@ class Chapitres extends Phaser.Scene {
     }
     preload() {}
     create() {
+        this.add.image(650, 475, "fond").setScale(0.75);
         this.add.image(650, 475, "fondu").setScale(0.41);
 
         //Prélude
