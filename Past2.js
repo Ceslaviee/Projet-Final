@@ -86,14 +86,6 @@ class Past2 extends Phaser.Scene {
         this.obstrue = this.physics.add.staticGroup();
         this.obstrue.create(2500, 820,'obstacle').setSize(90,350);
 
-        this.add.image(2550, 820,'obstacle')
-        
-        this.add.image(2590, 820,'obstacle')
-
-        this.add.image(2450, 820,'obstacle')
-
-        this.add.image(2480, 820,'obstacle')
-
         this.add.sprite(2500,890,'slime').setScale(0.6)
 
 
