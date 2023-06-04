@@ -60,23 +60,23 @@ class Past2 extends Phaser.Scene {
 
         /* texte */
         this.porte = this.physics.add.staticGroup();
-        this.porte.create(210,920, 'porte').setScale(0.1).setSize(100,100);
+        this.porte.create(310,920, 'porte').setScale(0.1).setSize(100,100);
         this.porte.setVisible(false)
         /* texte1 */
         this.porte1 = this.physics.add.staticGroup();
-        this.porte1.create(630,920, 'porte').setScale(0.2);
+        this.porte1.create(280,680, 'porte').setScale(0.2);
         this.porte1.setVisible(false)
         /* texte2 */
         this.porte2 = this.physics.add.staticGroup();
-        this.porte2.create(1130,920, 'porte').setScale(0.2);
+        this.porte2.create(1130,780, 'porte').setScale(0.2);
         this.porte2.setVisible(false)
         /* texte3 */
         this.porte3 = this.physics.add.staticGroup();
-        this.porte3.create(1730,920, 'porte').setScale(0.2);
+        this.porte3.create(1860,940, 'porte').setScale(0.2).setSize(75,75);
         this.porte3.setVisible(false)
         /* texte4 */        
         this.porte4 = this.physics.add.staticGroup();
-        this.porte4.create(2330,920, 'porte').setScale(0.2);
+        this.porte4.create(2530,480, 'porte').setScale(0.2);
         this.porte4.setVisible(false)
         /* texte5 */        
         this.porte5 = this.physics.add.staticGroup();
@@ -85,6 +85,7 @@ class Past2 extends Phaser.Scene {
 
         this.obstrue = this.physics.add.staticGroup();
         this.obstrue.create(2500, 820,'obstacle').setSize(90,350);
+        this.obstrue.setVisible(false)
 
         this.add.sprite(2500,890,'slime').setScale(0.6)
 
@@ -294,7 +295,7 @@ class Past2 extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(110, 790, 'Il était une fois, un royaume lointain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(10, 790, 'Ravagé par le regret elle pris une décision', { font: "20px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
@@ -302,7 +303,7 @@ class Past2 extends Phaser.Scene {
     texte1()
     {
         if (this.valeur1 == 0){
-        this.parfois = this.add.text(530, 790, 'Deux sœurs s’accommoderent de cet endroit anodin.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(230, 620, 'Elle enfouirais ces souvenirs au fond de sa mémoire.', { font: "20px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur1 = 1
         }
@@ -310,7 +311,7 @@ class Past2 extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.parfois = this.add.text(1030, 790, 'Mais un jour, l’une d elles s’envola, à la recherche de l’horizon.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(920, 680, "Et plus jamais souffrirai t'elle de sa perte", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur2 = 1
         }
@@ -318,7 +319,7 @@ class Past2 extends Phaser.Scene {
     texte3()
     {
         if (this.valeur3 == 0){
-        this.parfois = this.add.text(1630, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1630, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur3 = 1
         }
@@ -326,7 +327,7 @@ class Past2 extends Phaser.Scene {
     texte4()
     {
         if (this.valeur4 == 0){
-        this.parfois = this.add.text(2230, 790, 'D’un être cher perdu dans l’univers et ses confins.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2330, 490, "Et de toutes ces péripéties seul un bracelet ", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur4 = 1
         }
@@ -334,7 +335,7 @@ class Past2 extends Phaser.Scene {
     texte5()
     {
         if (this.valeur5 == 0){
-        this.parfois = this.add.text(2730, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2730, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2500)
         this.valeur5 = 1
         }

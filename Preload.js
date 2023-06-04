@@ -55,6 +55,8 @@ class Preload extends Phaser.Scene {
         this.load.image('fondu','doc/bleu_fonc.png')
         this.load.image('obstacle','doc/arbre.png')
         this.load.image('collier','doc/collier.png')
+        this.load.image('adieu','doc/voila.png')
+        this.load.image('masoeur','doc/adieu.png')
         
 
         /* preload planetes */
@@ -89,7 +91,7 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet("slimeR", "doc/slime2.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet("slimeRed", "doc/slime2_back.png",{frameWidth : 262, frameHeight: 192});
         this.load.spritesheet('stop', 'doc/idle.png',{frameWidth : 161, frameHeight: 217});
-        this.load.spritesheet('marche', 'doc/animation2.png',{frameWidth : 173, frameHeight: 230});
+        this.load.spritesheet('marche', 'doc/animation2.png',{frameWidth : 160, frameHeight: 230});
         this.load.spritesheet('fire','doc/fire.png',{frameWidth : 210, frameHeight: 158})
         this.load.spritesheet('fire2','doc/feu.png',{frameWidth : 210, frameHeight: 158})
         this.load.image('perso2', 'doc/Gala.png',{ frameWidth: 32, frameHeight: 65 });
@@ -161,7 +163,7 @@ class Preload extends Phaser.Scene {
         this.anims.create({
             key: 'gauche',
             frames: this.anims.generateFrameNumbers('marche', {start:19,end:11}),
-            frameRate: 6,
+            frameRate: 5,
             repeat: -1
         })
 
@@ -169,7 +171,7 @@ class Preload extends Phaser.Scene {
         this.anims.create({
             key: 'droite',
             frames: this.anims.generateFrameNumbers('marche', {start:0,end:8}),
-            frameRate: 6,
+            frameRate: 5,
             repeat: -1
         })
 

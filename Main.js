@@ -15,6 +15,7 @@ class Main extends Phaser.Scene {
         
         this.gameButton = this.add.image(640, 775, "coment").setInteractive().setScale(0.21);
         this.gameButton.on("pointerdown", this.launchGame, this);
+
     }
     update() {}
     launchCredits()

@@ -75,7 +75,7 @@ class Zone_1 extends Phaser.Scene {
 
         this.lux = 0
 
-        this.add.text(300, 800, 'Appuie sur Espace', { font: "25px SchwarzKopf", fill: "white", align:"center" });
+        this.add.text(200, 730, 'Appuie sur Espace pour entrer dans le souvenir', { font: "20px SchwarzKopf", fill: "white", align:"center" });
 
 
         

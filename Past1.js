@@ -41,6 +41,25 @@ class Past1 extends Phaser.Scene {
         this.porte.create(125,850, 'porte').setScale(0.2);
 
 
+        this.porte = this.physics.add.staticGroup();
+        this.porte.create(350,920, 'porte').setScale(0.1).setSize(100,100);
+        this.porte.setVisible(false)
+
+        
+        this.porte1 = this.physics.add.staticGroup();
+        this.porte1.create(1000,720, 'porte').setScale(0.1).setSize(100,100);
+        this.porte1.setVisible(false)
+
+        
+        this.porte2 = this.physics.add.staticGroup();
+        this.porte2.create(1450,920, 'porte').setScale(0.1).setSize(100,100);
+        this.porte2.setVisible(false)
+
+        this.porte3 = this.physics.add.staticGroup();
+        this.porte3.create(2550,920, 'porte').setScale(0.1).setSize(100,100);
+        this.porte3.setVisible(false)
+
+
 
 
 
@@ -62,6 +81,10 @@ class Past1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.calque_chute,this.respawn, null, this );
         this.physics.add.overlap(this.player, this.pickup, this.upScore, null, this );
         this.physics.add.overlap(this.player, this.porte, this.entree, null, this);
+        this.physics.add.overlap(this.player, this.porte, this.texte, null, this);
+        this.physics.add.overlap(this.player, this.porte1, this.texte1, null, this);
+        this.physics.add.overlap(this.player, this.porte2, this.texte2, null, this);
+        this.physics.add.overlap(this.player, this.porte3, this.texte3, null, this);
         this.scoreTexte = this.add.text(880, 40, this.score, {
             fontSize : '32px', fill : "#000"
         }).setScrollFactor(0)
@@ -70,7 +93,10 @@ class Past1 extends Phaser.Scene {
         this.gameButton.on("pointerdown", this.coAudio, this);
         
         this.lux = 0
-
+        this.valeur = 0
+        this.valeur1 = 0
+        this.valeur2 = 0
+        this.valeur3 = 0
     }
         
     update() {
@@ -122,6 +148,38 @@ class Past1 extends Phaser.Scene {
 
 
     }
+    texte()
+    {
+        if (this.valeur == 0){
+        this.parfois = this.add.text(310, 720, 'Il était une fois deux soeurs...', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,2000)
+        this.valeur = 1
+        }
+    }
+    texte1()
+    {
+        if (this.valeur1 == 0){
+        this.parfois = this.add.text(1000, 520, 'Elles reignaient ensemble sur ce royaume', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,2000)
+        this.valeur1 = 1
+        }
+    }
+    texte2()
+    {
+        if (this.valeur2 == 0){
+        this.parfois = this.add.text(1210, 720, 'Mais un jour une disparu', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,2000)
+        this.valeur2 = 1
+        }
+    }
+    texte3()
+    {
+        if (this.valeur3 == 0){
+        this.parfois = this.add.text(2410, 720, "Ainsi le royaume se retrouva orphelin, privé de l'une de ses reines.", { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,2000)
+        this.valeur3 = 1
+        }
+    }
     entree()
     {
         if (this.cursors.shift.isDown){
@@ -132,6 +190,28 @@ class Past1 extends Phaser.Scene {
             }
             );
         }
+    }
+    fadeInAndOut(image, duration, fadeOutDelay) {
+        
+        const initialOpacity = image.alpha;
+    
+        
+        this.tweens.add({
+            targets: image,
+            alpha: 1,
+            duration: duration / 2, 
+            onComplete: () => {
+                
+                this.time.delayedCall(fadeOutDelay, () => {
+                    
+                    this.tweens.add({
+                        targets: image,
+                        alpha: initialOpacity,
+                        duration: duration / 2, 
+                    });
+                });
+            }
+        });
     }
     switch1() 
     {
