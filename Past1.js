@@ -151,7 +151,7 @@ class Past1 extends Phaser.Scene {
     texte()
     {
         if (this.valeur == 0){
-        this.parfois = this.add.text(310, 720, 'Il était une fois deux soeurs...', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(310, 720, 'Il était une fois deux soeurs...', { font: "30px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur = 1
         }
@@ -159,7 +159,7 @@ class Past1 extends Phaser.Scene {
     texte1()
     {
         if (this.valeur1 == 0){
-        this.parfois = this.add.text(1000, 520, 'Elles reignaient ensemble sur ce royaume', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1000, 520, 'Elles reignaient ensemble sur ce royaume', { font: "30px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur1 = 1
         }
@@ -167,7 +167,7 @@ class Past1 extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.parfois = this.add.text(1210, 720, 'Mais un jour une disparu', { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(1210, 720, 'Mais un jour une disparu', { font: "30px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur2 = 1
         }
@@ -175,7 +175,7 @@ class Past1 extends Phaser.Scene {
     texte3()
     {
         if (this.valeur3 == 0){
-        this.parfois = this.add.text(2410, 720, "Ainsi le royaume se retrouva orphelin, privé de l'une de ses reines.", { font: "30px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(2410, 720, "Ainsi le royaume se retrouva orphelin, privé de l'une de ses reines.", { font: "30px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,2000)
         this.valeur3 = 1
         }
