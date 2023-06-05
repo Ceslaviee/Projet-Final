@@ -296,7 +296,7 @@ class Past2 extends Phaser.Scene {
     {
         if (this.valeur == 0){
         this.parfois = this.add.text(10, 790, 'Ravagé par le regret elle pris une décision', { font: "20px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur = 1
         }
     }
@@ -304,7 +304,7 @@ class Past2 extends Phaser.Scene {
     {
         if (this.valeur1 == 0){
         this.parfois = this.add.text(230, 620, 'Elle enfouirais ces souvenirs au fond de sa mémoire.', { font: "20px SchwarzKopf New", fill: "grey", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur1 = 1
         }
     }
@@ -312,31 +312,31 @@ class Past2 extends Phaser.Scene {
     {
         if (this.valeur2 == 0){
         this.parfois = this.add.text(920, 680, "Et plus jamais souffrirai t'elle de sa perte", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur2 = 1
         }
     }
     texte3()
     {
         if (this.valeur3 == 0){
-        this.parfois = this.add.text(1630, 790, 'Laissant l’autre veuve de réponses à ses questions.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
+        this.parfois = this.add.text(1630, 790, 'Elles répandit ses possession au quatre coins du monde', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur3 = 1
         }
     }
     texte4()
     {
         if (this.valeur4 == 0){
-        this.parfois = this.add.text(2330, 490, "Et de toutes ces péripéties seul un bracelet ", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2000)
+        this.parfois = this.add.text(2330, 490, "Et de toutes ces péripéties seul un bracelet reste", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur4 = 1
         }
     }
     texte5()
     {
         if (this.valeur5 == 0){
-        this.parfois = this.add.text(2730, 790, 'Elle erra longtemps, bravant mille dangers, pour entendre ce refrain.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
-        this.fadeInAndOut(this.parfois,3000,2500)
+        this.parfois = this.add.text(2730, 790, 'Elle se tourna de tous et de tout telle une étoile mourante.', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur5 = 1
         }
     }
