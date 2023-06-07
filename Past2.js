@@ -246,6 +246,8 @@ class Past2 extends Phaser.Scene {
     hitBomb(player, feu){
         this.physics.pause();
         this.cameras.main.fadeOut(3000, 0, 0, 0)
+        this.gameover.setAlpha(1)
+        this.fadeInAndOut(this.gameover,2000,1000)
         this.time.delayedCall(5000,this.respawn,[],this)
         }
     clé()
