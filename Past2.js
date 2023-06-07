@@ -311,7 +311,7 @@ class Past2 extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.parfois = this.add.text(920, 680, "Et plus jamais souffrirai t'elle de sa perte", { font: "20px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
+        this.parfois = this.add.text(980, 690, "Et plus jamais souffrirai t'elle de sa perte", { font: "20px Times New Roman", fill: "grey", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.parfois,3000,3000)
         this.valeur2 = 1
         }

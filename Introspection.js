@@ -156,7 +156,7 @@ class Introspection extends Phaser.Scene {
     texte1()
     {
         if (this.valeur1 == 0){
-        this.par = this.add.text(310, 700, 'Je sais que tu es deja partie', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.par = this.add.text(310, 700, 'Je sais que tu es partie', { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.par,3000,2000)
         this.valeur1 = 1
         }
@@ -164,7 +164,7 @@ class Introspection extends Phaser.Scene {
     texte2()
     {
         if (this.valeur2 == 0){
-        this.soeur = this.add.text(550, 730, "L'apocalypse n'a jamais laisser qu'un sillage de larmes et de sang.", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.soeur = this.add.text(540, 730, "L'apocalypse n'a jamais laisser qu'un sillage de larmes et de sang.", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.soeur,3000,2000)
         this.valeur2 = 1
         }
@@ -196,7 +196,7 @@ class Introspection extends Phaser.Scene {
     texte6()
     {
         if (this.valeur6 == 0){
-        this.par = this.add.text(1340, 900, "Mais cela restera à jamais qu'un souvenir appartenant à un passé d'antan", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.par = this.add.text(1340, 900, "Mais cela restera à jamais qu'un désir innachevable. Acconché par ton souvenir.", { font: "20px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.par,3000,2000)
         this.valeur6 = 1
         }

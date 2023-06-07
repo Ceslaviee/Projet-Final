@@ -65,7 +65,7 @@ class Debut extends Phaser.Scene {
         this.gauche = 0
         this.points = 1
 
-        this.dia = this.add.text(5, 790, 'Je devrais ramasser des fleurs pour Encel', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);        
+        this.dia = this.add.text(5, 790, 'Je devrais ramasser des fleurs pour Encel', { font: "20px Times New Roman", fill: "white", align:"center" }).setAlpha(0);        
         this.fadeInAndOut(this.dia,3000,2000)
 
         this.valeur = 0
@@ -143,7 +143,7 @@ class Debut extends Phaser.Scene {
         if (this.test == 0)
         {this.physics.pause()
         this.time.delayedCall(3000, this.defreeze,[],this)
-        this.event = this.add.text(511, 620, 'Appuyez sur Shift pour interagir.', { font: "30px SchwarzKopf New", fill: "white", align:"center" }).setAlpha(0);
+        this.event = this.add.text(511, 620, 'Appuyez sur Shift pour interagir.', { font: "20px Times New Roman", fill: "white", align:"center" }).setAlpha(0);
         this.fadeInAndOut(this.event, 3000, 1000)
         this.tutoriel = this.physics.add.overlap(this.player, this.incidence1, this.point, null, this);        
         this.test = 1}
